@@ -7,14 +7,5 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  options: FormGroup;
-
-  constructor(fb: FormBuilder) {
-    this.options = fb.group({
-      bottom: 0,
-      fixed: false,
-      top: 0,
-    });
-  }
-
+  constructor() {}
 }

@@ -45,13 +45,19 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatBadgeModule } from '@angular/material/badge';
+import { LoginComponent } from './content/login/login.component';
+import { LayoutComponent } from './layout/layout/layout.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    LayoutComponent,
+    LoginComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -70,7 +76,6 @@ export function tokenGetter() {
         skipWhenExpired: true,
       },
     }),
-
     CommonModule,
     FormsModule,
     BlockUIModule,

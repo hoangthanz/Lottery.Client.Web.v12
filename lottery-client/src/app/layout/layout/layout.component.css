@@ -1,7 +1,7 @@
 .layout-container {
   position: absolute;
   top: 56px;
-  bottom: 0;
+  bottom: 56px;
   left: 0;
   right: 0;
 }
@@ -33,6 +33,12 @@
   justify-content: center;
 }
 
+.image-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .button-layout-size {
   width: 100%;
   height: 100%;
@@ -46,30 +52,10 @@
   .font-layout {
     font-size: 14px;
   }
-
-  .img-login-panel {
-    width: 100vw;
-    height: 15vh;
-  }
 }
 
 @media screen and (max-width: 768px) {
   .font-layout {
     font-size: 12px;
   }
-
-  .img-login-panel {
-    width: 30vh;
-    height: 30vh;
-  }
-}
-
-.image-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-mat-form-field {
-  width: 100%;
 }
