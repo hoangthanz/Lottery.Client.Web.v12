@@ -1,0 +1,36 @@
+@media screen and (min-width: 601px) {
+  .font-layout {
+    font-size: 14px;
+  }
+
+  .img-account-panel {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: solid 1px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .font-layout {
+    font-size: 12px;
+  }
+
+  .img-account-panel {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: solid 2px whitesmoke;
+  }
+}
+
+.image-top-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #6c63ff;
+}
+
+mat-form-field {
+  width: 100%;
+}

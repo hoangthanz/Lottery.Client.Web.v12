@@ -31,7 +31,7 @@
     "ngx-permissions": "^7.0.3",
     "ngx-print": "^1.2.0-beta.4",
     "ngx-scrollbar": "^7.2.1-beta.0",
-    "ngx-toastr": "^12.0.1",
+    "ngx-toastr": "12.1.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

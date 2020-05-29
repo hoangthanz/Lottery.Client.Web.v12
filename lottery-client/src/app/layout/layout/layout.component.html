@@ -1,61 +1,63 @@
 <ng-container>
-  <mat-toolbar style="background-color: #6C63FF;" class="layout-header">
-      <div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center" style="width: 100%;">
-          <div fxFlex="33%" fxFlex.xs="33%">
-              <button class="font-layout" mat-flat-button style="background-color: #6C63FF; color: white;"
-                  (click)="sidenav.toggle()">
-                  <mat-icon>menu</mat-icon>
-              </button>
-          </div>
-          <div fxFlex="33%" fxFlex.xs="33%">
-              <span style="color: whitesmoke;">{{ titleTop }}</span>
-          </div>
-          <div fxFlex="33%" fxFlex.xs="33%"> </div>
+    <mat-toolbar style="background-color: #6C63FF;" class="layout-header">
+        <div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center"
+            style="width: 100%;">
+            <div fxFlex="33%" fxFlex.xs="33%">
+                <button class="font-layout" mat-flat-button style="background-color: #6C63FF; color: white;"
+                    (click)="sidenav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </div>
+            <div fxFlex="33%" fxFlex.xs="33%">
+                <span style="color: whitesmoke;">{{ titleTop }}</span>
+            </div>
+            <div fxFlex="33%" fxFlex.xs="33%"> </div>
 
-      </div>
+        </div>
 
-  </mat-toolbar>
+    </mat-toolbar>
 
-  <mat-sidenav-container class="layout-container" autosize>
-      <mat-sidenav #sidenav mode="side" opened class="layout-sidenav" [fixedInViewport]="false">
-          <ng-material-multilevel-menu [configuration]='config' [items]='appitems'
-              (selectedItem)="selectedItem($event)" [expandCollapseStatus]="expandCollapseStatus"
-              (selectedLabel)="selectedLabel($event)">
-          </ng-material-multilevel-menu>
-      </mat-sidenav>
+    <mat-sidenav-container class="layout-container" autosize>
+        <mat-sidenav #sidenav mode="over" opened class="layout-sidenav" [fixedInViewport]="false">
+            <ng-material-multilevel-menu [configuration]='config' [items]='appitems'
+                (selectedItem)="selectedItem($event)" [expandCollapseStatus]="expandCollapseStatus"
+                (selectedLabel)="selectedLabel($event)">
+            </ng-material-multilevel-menu>
+        </mat-sidenav>
 
-      <mat-sidenav-content>
-          <router-outlet></router-outlet>
-      </mat-sidenav-content>
-  </mat-sidenav-container>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 
-  <mat-toolbar class="layout-footer" style="background-color: white;">
-      <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="center" style="width: 100%;height: 90%;">
-          <div fxFlex="25%" class="button-center">
-              <button class="button-layout-size font-layout" mat-flat-button>
-                  <mat-icon>nature_people</mat-icon>
-                  Xổ số
-              </button>
-          </div>
+    <mat-toolbar class="layout-footer" style="background-color: white;">
+        <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="center" style="width: 100%;height: 90%;">
+            <div fxFlex="25%" class="button-center">
+                <button class="button-layout-size font-layout" mat-flat-button>
+                    <mat-icon>nature_people</mat-icon>
+                    Xổ số
+                </button>
+            </div>
 
-          <div fxFlex="25%" class="button-center">
-              <button class="button-layout-size font-layout" mat-flat-button>
-                  <mat-icon>home</mat-icon>
-                  Kết quả
-              </button>
-          </div>
-          <div fxFlex="25%" class="button-center">
-              <button class="button-layout-size font-layout" mat-flat-button>
-                  <mat-icon>apartment</mat-icon>
-                  Đại lý
-              </button>
-          </div>
-          <div fxFlex="25%" class="button-center">
-              <button class="button-layout-size font-layout" mat-flat-button>
-                  <mat-icon>person</mat-icon>
-                  Tài khoản
-              </button>
-          </div>
-      </div>
-  </mat-toolbar>
+            <div fxFlex="25%" class="button-center">
+                <button class="button-layout-size font-layout" mat-flat-button>
+                    <mat-icon>home</mat-icon>
+                    Kết quả
+                </button>
+            </div>
+            <div fxFlex="25%" class="button-center">
+                <button class="button-layout-size font-layout" mat-flat-button>
+                    <mat-icon>apartment</mat-icon>
+                    Đại lý
+                </button>
+            </div>
+            <div fxFlex="25%" class="button-center">
+                <button class="button-layout-size font-layout" mat-flat-button (click)="tranferToAccount()"
+                    routerLink="account" routerLinkActive="active">
+                    <mat-icon>person</mat-icon>
+                    Tài khoản
+                </button>
+            </div>
+        </div>
+    </mat-toolbar>
 </ng-container>

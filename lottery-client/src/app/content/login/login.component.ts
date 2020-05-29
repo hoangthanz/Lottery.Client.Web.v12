@@ -1,13 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/shared/services/login.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { CurrencyPipe, DatePipe } from '@angular/common';
+import { BaseComponentService } from 'src/app/shared/components/base-components/base-component.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends BaseComponentService implements OnInit {
   titleTop = 'Đăng nhập';
-
+  userName: string;
+  password: string;
+  rememberMe: boolean = false;
   config = {
     paddingAtStart: true,
     interfaceWithRoute: true,
@@ -31,9 +38,7 @@ export class LoginComponent implements OnInit {
     {
       label: 'Quy định và luật lệ',
       icon: 'account_balance',
-      onSelected: function () {
-        console.log('Item 3');
-      },
+      onSelected: function () {},
     },
     {
       label: 'Cờ bạc có trách nhiệm',
@@ -65,7 +70,15 @@ export class LoginComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(
+    private loginService: LoginService,
+    public toastr: ToastrService,
+    public router: Router,
+    public currencyPipe: CurrencyPipe,
+    public datePipe: DatePipe
+  ) {
+    super(toastr, router, currencyPipe, datePipe);
+  }
 
   ngOnInit() {}
 
@@ -74,5 +87,23 @@ export class LoginComponent implements OnInit {
   }
   selectedLabel(e) {
     console.log(e);
+  }
+
+  login() {
+    const user = {
+      userName: this.userName,
+      password: this.password,
+      rememberMe: this.rememberMe,
+    };
+
+    this.loginService.login(user).subscribe(
+      (response: any) => {
+        localStorage.setItem('token', response.token);
+        this.GoTo('lottery');
+      },
+      (error) => {
+        this.ShowWarningMessage('Tài khoản hoăc mật khẩu không đúng!');
+      }
+    );
   }
 }
