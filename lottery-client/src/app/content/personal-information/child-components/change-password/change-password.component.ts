@@ -47,9 +47,21 @@ export class ChangePasswordComponent extends BaseComponentService
   }
 
   updatePassword() {
-    if(this.passwordForm.valid){
+    if (this.passwordForm.valid) {
+      const tokenPayload = this.ConvertStringToObject(
+        localStorage.getItem('tokenPayload')
+      );
       const changePassword = this.passwordForm.value;
-      this.userService.changePassword('',changePassword).subscribe((response)=>{},error=>{});
+      this.userService
+        .changePassword(tokenPayload.id, changePassword)
+        .subscribe(
+          (response) => {
+            this.ShowSuccessMessage('Thay đổi mật khẩu thành công!');
+          },
+          (error) => {
+            this.ShowWarningMessage(error.message);
+          }
+        );
     }
   }
 }

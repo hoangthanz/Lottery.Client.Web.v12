@@ -65,4 +65,12 @@ export class BaseComponentService {
   public GoTo(path: string) {
     this.router.navigateByUrl(path);
   }
+
+  public ConvertObjectToString(object){
+    return JSON.stringify(object);
+  }
+
+  public ConvertStringToObject(str){
+    return JSON.parse(str);
+  }
 }

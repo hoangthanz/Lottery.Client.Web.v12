@@ -102,6 +102,7 @@ export class LoginComponent extends BaseComponentService implements OnInit {
         localStorage.setItem('token', response.token);
         const tokenPayload = decode(response.token);
         console.log(tokenPayload);
+        localStorage.setItem('tokenPayload',this.ConvertObjectToString(tokenPayload));
         this.GoTo('lottery');
       },
       (error) => {
