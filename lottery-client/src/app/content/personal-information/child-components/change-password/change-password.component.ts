@@ -53,15 +53,48 @@ export class ChangePasswordComponent extends BaseComponentService
       );
       const changePassword = this.passwordForm.value;
       this.userService
-        .changePassword(tokenPayload.id, changePassword)
+        .changePassword(tokenPayload.Id, changePassword)
         .subscribe(
           (response) => {
             this.ShowSuccessMessage('Thay đổi mật khẩu thành công!');
+            this.resetChangePasswordForm();
           },
           (error) => {
-            this.ShowWarningMessage(error.message);
+            this.ShowResponseMessage(error);
           }
         );
     }
+  }
+
+  updatePaymentPassword() {
+    if (this.paymentPasswordForm.valid) {
+      const tokenPayload = this.ConvertStringToObject(
+        localStorage.getItem('tokenPayload')
+      );
+      const changePaymentPassword = this.paymentPasswordForm.value;
+      this.userService
+        .changePassword(tokenPayload.Id, changePaymentPassword)
+        .subscribe(
+          (response) => {
+            this.ShowSuccessMessage('Thay đổi mật khẩu thanh toán thành công!');
+            this.resetChangePaymentPasswordForm();
+          },
+          (error) => {
+            this.ShowResponseMessage(error);
+          }
+        );
+    }
+  }
+
+  resetChangePasswordForm() {
+    this.passwordForm.controls['password'].setValue(null);
+    this.passwordForm.controls['newPassword'].setValue(null);
+    this.passwordForm.controls['confirmNewPassword'].setValue(null);
+  }
+
+  resetChangePaymentPasswordForm() {
+    this.paymentPasswordForm.controls['paymentPassword'].setValue(null);
+    this.paymentPasswordForm.controls['newPaymentPassword'].setValue(null);
+    this.paymentPasswordForm.controls['confirmNewPaymentPassword'].setValue(null);
   }
 }

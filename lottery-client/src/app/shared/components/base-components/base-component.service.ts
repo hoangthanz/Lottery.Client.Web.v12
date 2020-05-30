@@ -73,4 +73,8 @@ export class BaseComponentService {
   public ConvertStringToObject(str){
     return JSON.parse(str);
   }
+
+  public ShowResponseMessage(error){
+    this.toastr.error(error.error.message);
+  }
 }

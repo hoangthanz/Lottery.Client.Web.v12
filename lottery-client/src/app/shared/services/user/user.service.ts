@@ -14,4 +14,11 @@ export class UserService {
       changePassword
     );
   }
+
+  changePaymentPassword(id: string, changePaymentPassword) {
+    return this.httpClient.post(
+      `${environment.lotteryDomain}/api/AppUsers/change-payment-password/${id}`,
+      changePaymentPassword
+    );
+  }
 }
