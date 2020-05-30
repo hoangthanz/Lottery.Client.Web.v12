@@ -10,6 +10,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+// Đổi màu các thanh underline 
 .mat-form-field-underline {
   background-color: #6c63ff !important;
 }
@@ -17,3 +18,7 @@ body {
 .mat-form-field-label {
   color: #6c63ff !important;
 }
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+  background: #6c63ff;
+} 

@@ -11,7 +11,7 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
   styleUrls: ['./layout.component.css'],
 })
 export class LayoutComponent extends BaseComponentService implements OnInit {
-  titleTop = 'Lottery';
+  titleTop = 'Tài khoản';
 
   config = {
     paddingAtStart: true,

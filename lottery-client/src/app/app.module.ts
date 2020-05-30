@@ -67,13 +67,27 @@ import { BaseComponentService } from './shared/components/base-components/base-c
 import { RulesComponent } from './content/static-components/rules/rules.component';
 import { UserService } from './shared/services/user/user.service';
 import { AccountManageComponent } from './content/account-manage/account-manage.component';
+import { PersonalInformationComponent } from './content/personal-information/personal-information.component';
+import { ChangePasswordComponent } from './content/personal-information/child-components/change-password/change-password.component';
+import { OtherInformationComponent } from './content/personal-information/child-components/other-information/other-information.component';
+import { PhoneComponent } from './content/personal-information/child-components/phone/phone.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
 @NgModule({
-  declarations: [AppComponent, LayoutComponent, LoginComponent, RulesComponent, AccountManageComponent],
+  declarations: [
+    AppComponent,
+    LayoutComponent,
+    LoginComponent,
+    RulesComponent,
+    AccountManageComponent,
+    PersonalInformationComponent,
+    ChangePasswordComponent,
+    OtherInformationComponent,
+    PhoneComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -150,7 +164,7 @@ export function tokenGetter() {
       useClass: TokenInterceptor,
       multi: true,
     },
-    UserService
+    UserService,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

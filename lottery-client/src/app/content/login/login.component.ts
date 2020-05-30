@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { BaseComponentService } from 'src/app/shared/components/base-components/base-component.service';
+import decode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -99,6 +100,8 @@ export class LoginComponent extends BaseComponentService implements OnInit {
     this.loginService.login(user).subscribe(
       (response: any) => {
         localStorage.setItem('token', response.token);
+        const tokenPayload = decode(response.token);
+        console.log(tokenPayload);
         this.GoTo('lottery');
       },
       (error) => {

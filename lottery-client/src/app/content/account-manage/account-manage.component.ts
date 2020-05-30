@@ -27,4 +27,13 @@ export class AccountManageComponent extends BaseComponentService
   }
 
   ngOnInit() {}
+
+  logout() {
+    localStorage.clear();
+    this.GoTo('login');
+  }
+
+  moveToPersonalInformation() {
+    this.GoTo('personal-information');
+  }
 }

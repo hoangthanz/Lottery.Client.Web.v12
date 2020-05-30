@@ -8,5 +8,10 @@ import { environment } from 'src/environments/environment';
 export class UserService {
   constructor(private httpClient: HttpClient) {}
 
-  
+  changePassword(id: string, changePassword) {
+    return this.httpClient.post(
+      `${environment.lotteryDomain}/api/AppUsers/change-password/${id}`,
+      changePassword
+    );
+  }
 }
