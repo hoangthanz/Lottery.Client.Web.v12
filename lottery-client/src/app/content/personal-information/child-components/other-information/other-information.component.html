@@ -1,3 +1,27 @@
-<p>
-  other-information works!
-</p>
+<form novalidate [formGroup]="otherInformationdForm" (ngSubmit)="updateInformation()">
+  <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center">
+
+    <div fxFlex="100%" class="mat-field-center">
+      <h2>Biệt danh</h2>
+    </div>
+
+
+    <div fxFlex="100%" class="mat-field-center">
+      <div style="width: 95%;">
+        <mat-form-field floatLabel="always">
+          <mat-label> Biệt danh mới</mat-label>
+          <input matInput formControlName="nickName">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxFlex="100%" class="mat-field-center">
+      <div style="width: 95%;">
+        <button style="width: 100%; background-color: #6C63FF; color: whitesmoke;" mat-flat-button type="submit">
+          Xác nhận
+        </button>
+      </div>
+    </div>
+
+  </div>
+</form>

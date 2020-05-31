@@ -14,20 +14,24 @@
 
     <div fxFlex="100%" class="image-top-avatar">
         <div style="width: 33.33%;">
-            <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke">
-                <mat-icon>flash_on</mat-icon>
+            <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke"
+                [routerLink]="['../pay-in-wallet']" routerLinkActive="
+            active">
+                <mat-icon>account_balance_wallet</mat-icon>
                 Nạp tiền
             </button>
         </div>
         <div style="width: 33.33%;">
-            <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke">
-                <mat-icon>dry</mat-icon>
+            <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke"
+                [routerLink]="['../withdraw-wallet']" routerLinkActive="
+            active">
+                <mat-icon>touch_app</mat-icon>
                 Rút tiền
             </button>
         </div>
         <div style="width: 33.33%;">
             <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke">
-                <mat-icon>account_balance_wallet</mat-icon>
+                <mat-icon>account_balance</mat-icon>
                 Ngân hàng
             </button>
         </div>
@@ -44,7 +48,8 @@
         </button>
     </div>
     <div fxFlex="100%">
-        <button mat-flat-button class="button-function">
+        <button mat-flat-button class="button-function" [routerLink]="['../message-chat']" routerLinkActive="
+        active">
             <mat-icon>chat</mat-icon>
             Tin nhắn
         </button>

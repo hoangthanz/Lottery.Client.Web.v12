@@ -1,0 +1,153 @@
+<div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center">
+  <div fxFlex="100%" fxFlex.xs="100%">
+
+    <mat-carousel timings="1000ms ease-in" [autoplay]="true" interval="4000" color="white" maxWidth="auto"
+      proportion="60" slides="5" [loop]="true" [hideArrows]="true" [hideIndicators]="false" [useKeyboard]="true" [h]
+      [useMouseWheel]="false" orientation="ltr">
+      <mat-carousel-slide #matCarouselSlide *ngFor="let slide of slides; let i = index" [image]="slide.image"
+        overlayColor="#00000040" [hideOverlay]="true"></mat-carousel-slide>
+    </mat-carousel>
+
+
+
+  </div>
+
+
+</div>
+
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center" style="margin-top: 15px;">
+  <div fxFlex="30%">
+    <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke"
+      [routerLink]="['../pay-in-wallet']" routerLinkActive="
+        active">
+      <mat-icon>account_balance_wallet</mat-icon>
+      Nạp tiền
+    </button>
+  </div>
+  <div fxFlex="30%">
+    <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke"
+      [routerLink]="['../withdraw-wallet']" routerLinkActive="
+    active">
+      <mat-icon>touch_app</mat-icon>
+      Rút tiền
+    </button>
+  </div>
+  <div fxFlex="30%">
+    <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke">
+      <mat-icon>support_agent</mat-icon>
+      Hỗ trợ
+    </button>
+  </div>
+</div>
+
+
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center" style="margin-top: 15px;">
+  <div fxFlex="94%">
+    <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke">
+      Xổ số miền bắc
+    </button>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+  style="margin-top: 15px; height: 10vh;">
+  <div fxFlex="94%">
+    <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 40%; height: 100%;">
+  </div>
+  <div fxFlex="94%">
+    <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 40%; height: 100%;">
+  </div>
+</div>
+
+
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+  style="margin-top: 15px;">
+  <div fxFlex="94%">
+    <mat-divider></mat-divider>
+  </div>
+</div>
+
+
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center" style="margin-top: 15px;">
+  <div fxFlex="94%">
+    <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke">
+      Xổ số miền trung
+    </button>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+  style="margin-top: 15px; height: 10vh;">
+  <div fxFlex="94%">
+    <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 40%; height: 100%;">
+  </div>
+  <div fxFlex="94%">
+    <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 40%; height: 100%;">
+  </div>
+</div>
+
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+  style="margin-top: 15px; height: 10vh;">
+  <div fxFlex="94%">
+    <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 40%; height: 100%;">
+  </div>
+  <div fxFlex="94%">
+    <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 40%; height: 100%;">
+  </div>
+</div>
+
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+  style="margin-top: 15px; height: 10vh;">
+  <div fxFlex="94%">
+    <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 40%; height: 100%;">
+  </div>
+  <div fxFlex="94%">
+    <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 40%; height: 100%;">
+  </div>
+</div>
+
+
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+  style="margin-top: 15px;">
+  <div fxFlex="94%">
+    <mat-divider></mat-divider>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center" style="margin-top: 15px;">
+  <div fxFlex="94%">
+    <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke">
+      Xổ số miền nam
+    </button>
+  </div>
+</div>
+
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+  style="margin-top: 15px; height: 10vh;">
+  <div fxFlex="94%">
+    <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 40%; height: 100%;">
+  </div>
+  <div fxFlex="94%">
+    <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 40%; height: 100%;">
+  </div>
+</div>
+
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+  style="margin-top: 15px; height: 10vh;">
+  <div fxFlex="94%">
+    <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 40%; height: 100%;">
+  </div>
+  <div fxFlex="94%">
+    <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 40%; height: 100%;">
+  </div>
+</div>
+
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+  style="margin-top: 15px; height: 10vh;">
+  <div fxFlex="94%">
+    <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 40%; height: 100%;">
+  </div>
+  <div fxFlex="94%">
+    <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 40%; height: 100%;">
+  </div>
+</div>

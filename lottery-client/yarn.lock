@@ -1028,6 +1028,13 @@
   resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.1.3.tgz#d7373eb9a1afc371342b8cf1a07e34368f3d65d7"
   integrity sha512-y7qc6SzZBlSpx8hEDfV0S9Cx6goROX/vBhS2Ru1Q78Jp1FlCMbxp7UcAN90rLgB3X8DSMBgDFxcmoG/VfdAhFA==
 
+"@ngmodule/material-carousel@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@ngmodule/material-carousel/-/material-carousel-0.6.0.tgz#096dc3b4f45414b462f476f0de3632487435ceb4"
+  integrity sha512-k3Os2TfbX69oa3AvG46sQflwuR836mUPpfRFcbMHkxEXw1uc9pAo2mEbmA9Srv9R9Mj0eJLeu0chNR7fuyzodQ==
+  dependencies:
+    tslib "^1.9.0"
+
 "@ngtools/webpack@9.1.7":
   version "9.1.7"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-9.1.7.tgz#4322757b029e1175a3361183c06b31d0576538d8"

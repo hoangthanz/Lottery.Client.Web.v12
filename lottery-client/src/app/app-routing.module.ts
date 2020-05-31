@@ -1,3 +1,4 @@
+import { MessageChatComponent } from './content/message-chat/message-chat.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout/layout.component';
@@ -6,6 +7,9 @@ import { RoleGuardService } from './shared/services/role-guard.service';
 import { AccountManageComponent } from './content/account-manage/account-manage.component';
 import { RulesComponent } from './content/static-components/rules/rules.component';
 import { PersonalInformationComponent } from './content/personal-information/personal-information.component';
+import { PayInWalletComponent } from './content/pay-in-wallet/pay-in-wallet.component';
+import { WithdrawWalletComponent } from './content/withdraw-wallet/withdraw-wallet.component';
+import { LotteryMainComponent } from './content/lottery-main/lottery-main.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -15,10 +19,15 @@ const routes: Routes = [
     component: LayoutComponent,
     canActivate: [RoleGuardService],
     children: [
-      { path: ' ', redirectTo: 'account' },
+      { path: ' ', redirectTo: 'lottery-main' },
       { path: 'account', component: AccountManageComponent },
       { path: 'rule', component: RulesComponent },
       { path: 'personal-information', component: PersonalInformationComponent },
+      { path: 'message-chat', component: MessageChatComponent },
+      { path: 'pay-in-wallet', component: PayInWalletComponent },
+      { path: 'withdraw-wallet', component: WithdrawWalletComponent },
+      { path: 'lottery-main', component: LotteryMainComponent },
+
     ],
   },
   { path: 'login', component: LoginComponent },

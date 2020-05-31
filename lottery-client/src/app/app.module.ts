@@ -1,3 +1,4 @@
+import { PayInWalletComponent } from './content/pay-in-wallet/pay-in-wallet.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -71,6 +72,10 @@ import { PersonalInformationComponent } from './content/personal-information/per
 import { ChangePasswordComponent } from './content/personal-information/child-components/change-password/change-password.component';
 import { OtherInformationComponent } from './content/personal-information/child-components/other-information/other-information.component';
 import { PhoneComponent } from './content/personal-information/child-components/phone/phone.component';
+import { MessageChatComponent } from './content/message-chat/message-chat.component';
+import { WithdrawWalletComponent } from './content/withdraw-wallet/withdraw-wallet.component';
+import { LotteryMainComponent } from './content/lottery-main/lottery-main.component';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -86,7 +91,11 @@ export function tokenGetter() {
     PersonalInformationComponent,
     ChangePasswordComponent,
     OtherInformationComponent,
-    PhoneComponent
+    PhoneComponent,
+    MessageChatComponent,
+    PayInWalletComponent,
+    WithdrawWalletComponent,
+    LotteryMainComponent
   ],
   imports: [
     BrowserModule,
@@ -149,6 +158,7 @@ export function tokenGetter() {
     MatBadgeModule,
 
     HttpClientModule,
+    MatCarouselModule.forRoot(),
   ],
   providers: [
     { provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check' },

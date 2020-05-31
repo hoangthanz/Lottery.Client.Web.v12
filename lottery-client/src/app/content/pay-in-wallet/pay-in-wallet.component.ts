@@ -1,22 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponentService } from 'src/app/shared/components/base-components/base-component.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { CurrencyPipe, DatePipe } from '@angular/common';
-import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
-  selector: 'app-phone',
-  templateUrl: './phone.component.html',
-  styleUrls: ['./phone.component.css'],
+  selector: 'app-pay-in-wallet',
+  templateUrl: './pay-in-wallet.component.html',
+  styleUrls: ['./pay-in-wallet.component.css'],
 })
-export class PhoneComponent extends BaseComponentService implements OnInit {
+export class PayInWalletComponent extends BaseComponentService
+  implements OnInit {
+    
   constructor(
+    private userService: UserService,
     public toastr: ToastrService,
     public router: Router,
     public currencyPipe: CurrencyPipe,
-    public datePipe: DatePipe,
-    private userService: UserService
+    public datePipe: DatePipe
   ) {
     super(toastr, router, currencyPipe, datePipe);
   }

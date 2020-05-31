@@ -11,3 +11,7 @@ mat-form-field {
 h2 {
   color: rgb(85, 83, 83);
 }
+
+table {
+  width: 100%;
+}
