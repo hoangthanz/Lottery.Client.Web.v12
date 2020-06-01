@@ -10,6 +10,7 @@ import { PersonalInformationComponent } from './content/personal-information/per
 import { PayInWalletComponent } from './content/pay-in-wallet/pay-in-wallet.component';
 import { WithdrawWalletComponent } from './content/withdraw-wallet/withdraw-wallet.component';
 import { LotteryMainComponent } from './content/lottery-main/lottery-main.component';
+import { RegisterComponent } from './content/register/register.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -27,10 +28,13 @@ const routes: Routes = [
       { path: 'pay-in-wallet', component: PayInWalletComponent },
       { path: 'withdraw-wallet', component: WithdrawWalletComponent },
       { path: 'lottery-main', component: LotteryMainComponent },
+   
+      
 
     ],
   },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({

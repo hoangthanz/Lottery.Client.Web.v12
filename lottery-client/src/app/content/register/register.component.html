@@ -1,0 +1,101 @@
+<ng-container>
+  <mat-toolbar style="background-color: #6C63FF;" class="layout-header">
+    <div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center" style="width: 100%;">
+      <div fxFlex="33%" fxFlex.xs="33%">
+        <button class="font-layout" mat-flat-button style="background-color: #6C63FF; color: white;"
+          [routerLink]="['../login']" routerLinkActive="
+        active">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+      <div fxFlex="33%" fxFlex.xs="33%">
+        <span style="color: whitesmoke;">{{ titleTop }}</span>
+      </div>
+      <div fxFlex fxFlex.xs> </div>
+
+    </div>
+
+  </mat-toolbar>
+
+  <mat-sidenav-container class="layout-container" autosize>
+
+    <mat-sidenav-content>
+      <form novalidate [formGroup]="registerForm" (ngSubmit)="register()">
+        <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+          style="margin-top: 15px;">
+
+          <div fxFlex="100%" class="image-center">
+            <div style="width: 90%;">
+              <mat-form-field floatLabel='always'>
+                <mat-label>Tên đăng nhập</mat-label>
+                <input matInput formControlName="userName" required>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex="100%" class="image-center">
+            <div style="width: 90%;">
+              <mat-form-field floatLabel='always'>
+                <mat-label>Mật khẩu</mat-label>
+                <input matInput type="password" formControlName="password" required>
+                <mat-error *ngIf="!registerForm.hasError('minLength') || !registerForm.hasError('pattern')">
+                  * ít nhất 8 kí tự, ít nhất 1 chữ hoa và 1 kí tự đặc biệt
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex="100%" class="image-center">
+            <div style="width: 90%;">
+              <mat-form-field floatLabel='always'>
+                <mat-label>Mật khẩu thanh toán</mat-label>
+                <input matInput type="password" formControlName="transactionPassword" required>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex="100%" class="image-center">
+            <div style="width: 90%;">
+              <mat-form-field floatLabel='always'>
+                <mat-label>Biệt danh</mat-label>
+                <input matInput formControlName="nickName" required>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex="100%" class="image-center">
+            <div style="width: 90%;">
+              <mat-form-field floatLabel='always'>
+                <mat-label>Số điện thoại</mat-label>
+                <input matInput formControlName="phoneNumber" required>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex="100%" class="image-center">
+            <div style="width: 90%;">
+              <mat-form-field floatLabel='always'>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" required>
+              </mat-form-field>
+            </div>
+          </div>
+
+
+
+          <div fxFlex="100%" class="image-center">
+            <div style="width: 90%;">
+              <button mat-flat-button type="submit"
+                style="width: 100%; background-color: #6C63FF; color: whitesmoke">Xác nhận</button>
+            </div>
+          </div>
+
+        </div>
+      </form>
+
+
+
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</ng-container>

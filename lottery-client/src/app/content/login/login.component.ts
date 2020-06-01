@@ -79,6 +79,9 @@ export class LoginComponent extends BaseComponentService implements OnInit {
     public datePipe: DatePipe
   ) {
     super(toastr, router, currencyPipe, datePipe);
+    if(localStorage.getItem('token') != null){
+      this.GoTo('/lottery');
+    }
   }
 
   ngOnInit() {}
@@ -110,4 +113,5 @@ export class LoginComponent extends BaseComponentService implements OnInit {
       }
     );
   }
+
 }

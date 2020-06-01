@@ -30,7 +30,7 @@
         </div>
         <div fxFlex="100%" class="image-center">
           <div style="width: 90%;">
-            <mat-form-field floatLabel='true'>
+            <mat-form-field floatLabel='always'>
               <mat-label>Tên đăng nhập</mat-label>
               <input matInput [(ngModel)]="userName">
               <mat-icon matSuffix style="color: lightgray;">face</mat-icon>
@@ -41,7 +41,7 @@
 
         <div fxFlex="100%" class="image-center">
           <div style="width: 90%;">
-            <mat-form-field floatLabel='true'>
+            <mat-form-field floatLabel='always'>
               <mat-label>Mật khẩu</mat-label>
               <input matInput type="password" [(ngModel)]="password">
               <mat-icon matSuffix style="color: lightgray;">vpn_key</mat-icon>
@@ -71,7 +71,8 @@
 
         <div fxFlex="100%" class="image-center">
           <div style="width: 90%;">
-            <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke">Đăng ký</button>
+            <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke" [routerLink]="['../register']" routerLinkActive="
+            active">Đăng ký</button>
           </div>
         </div>
       </div>

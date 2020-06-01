@@ -76,6 +76,7 @@ import { MessageChatComponent } from './content/message-chat/message-chat.compon
 import { WithdrawWalletComponent } from './content/withdraw-wallet/withdraw-wallet.component';
 import { LotteryMainComponent } from './content/lottery-main/lottery-main.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { RegisterComponent } from './content/register/register.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -95,7 +96,8 @@ export function tokenGetter() {
     MessageChatComponent,
     PayInWalletComponent,
     WithdrawWalletComponent,
-    LotteryMainComponent
+    LotteryMainComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
