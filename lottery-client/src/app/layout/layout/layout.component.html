@@ -18,7 +18,7 @@
     </mat-toolbar>
 
     <mat-sidenav-container class="layout-container" autosize>
-        <mat-sidenav #sidenav mode="over" opened class="layout-sidenav" [fixedInViewport]="false">
+        <mat-sidenav #sidenav mode="over" class="layout-sidenav" [fixedInViewport]="false">
             <ng-material-multilevel-menu [configuration]='config' [items]='appitems'
                 (selectedItem)="selectedItem($event)" [expandCollapseStatus]="expandCollapseStatus"
                 (selectedLabel)="selectedLabel($event)">
@@ -34,20 +34,22 @@
         <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="center" style="width: 100%;height: 90%;">
             <div fxFlex="25%" class="button-center">
                 <button class="button-layout-size font-layout" mat-flat-button style="color: rgb(100, 93, 93);"
-                    routerLink="lottery-main" routerLinkActive="active">
+                    (click)="tranferToLottery()" routerLink="lottery-main" routerLinkActive="active">
                     <mat-icon>nature_people</mat-icon>
                     Xổ số
                 </button>
             </div>
 
             <div fxFlex="25%" class="button-center">
-                <button class="button-layout-size font-layout" mat-flat-button style="color: rgb(100, 93, 93);">
+                <button class="button-layout-size font-layout" mat-flat-button style="color: rgb(100, 93, 93);"
+                    (click)="tranferToLottoResult()" routerLink="lotto-result" routerLinkActive="active">
                     <mat-icon>filter_alt</mat-icon>
                     Kết quả
                 </button>
             </div>
             <div fxFlex="25%" class="button-center">
-                <button class="button-layout-size font-layout" mat-flat-button style="color: rgb(100, 93, 93);">
+                <button class="button-layout-size font-layout" mat-flat-button style="color: rgb(100, 93, 93);"
+                    (click)="tranferToSalesAgent()" routerLink="sales-agent" routerLinkActive="active">
                     <mat-icon>apartment</mat-icon>
                     Đại lý
                 </button>

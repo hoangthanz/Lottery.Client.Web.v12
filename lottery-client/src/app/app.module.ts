@@ -77,6 +77,11 @@ import { WithdrawWalletComponent } from './content/withdraw-wallet/withdraw-wall
 import { LotteryMainComponent } from './content/lottery-main/lottery-main.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { RegisterComponent } from './content/register/register.component';
+import { SalesAgentComponent } from './content/sales-agent/sales-agent.component';
+import { LottoResultComponent } from './content/lotto-result/lotto-result.component';
+import { AseanLottoService } from './shared/services/asean-lotto/asean-lotto.service';
+import { RegisterSubordinateMemberComponent } from './content/sales-agent/child-components/register-subordinate-member/register-subordinate-member.component';
+import { RefLinkAccountComponent } from './content/ref-link-account/ref-link-account.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -97,7 +102,11 @@ export function tokenGetter() {
     PayInWalletComponent,
     WithdrawWalletComponent,
     LotteryMainComponent,
-    RegisterComponent
+    RegisterComponent,
+    SalesAgentComponent,
+    LottoResultComponent,
+    RegisterSubordinateMemberComponent,
+    RefLinkAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -177,6 +186,7 @@ export function tokenGetter() {
       multi: true,
     },
     UserService,
+    AseanLottoService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

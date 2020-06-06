@@ -1,0 +1,14 @@
+.button-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-size {
+  width: 95%;
+  color: whitesmoke;
+  height: 10vh;
+  text-align: left;
+  font-weight: 700;
+  color: gray;
+}

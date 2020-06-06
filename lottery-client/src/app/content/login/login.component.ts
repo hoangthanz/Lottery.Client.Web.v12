@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { BaseComponentService } from 'src/app/shared/components/base-components/base-component.service';
 import decode from 'jwt-decode';
+import { CommonConst } from 'src/app/shared/const/common-const';
 
 @Component({
   selector: 'app-login',
@@ -104,9 +105,10 @@ export class LoginComponent extends BaseComponentService implements OnInit {
       (response: any) => {
         localStorage.setItem('token', response.token);
         const tokenPayload = decode(response.token);
+        CommonConst.currentUser = tokenPayload;
         console.log(tokenPayload);
         localStorage.setItem('tokenPayload',this.ConvertObjectToString(tokenPayload));
-        this.GoTo('lottery');
+        this.GoTo('lottery/lottery-main');
       },
       (error) => {
         this.ShowWarningMessage('Tài khoản hoăc mật khẩu không đúng!');

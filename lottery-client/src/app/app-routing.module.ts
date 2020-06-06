@@ -11,6 +11,10 @@ import { PayInWalletComponent } from './content/pay-in-wallet/pay-in-wallet.comp
 import { WithdrawWalletComponent } from './content/withdraw-wallet/withdraw-wallet.component';
 import { LotteryMainComponent } from './content/lottery-main/lottery-main.component';
 import { RegisterComponent } from './content/register/register.component';
+import { SalesAgentComponent } from './content/sales-agent/sales-agent.component';
+import { LottoResultComponent } from './content/lotto-result/lotto-result.component';
+import { RegisterSubordinateMemberComponent } from './content/sales-agent/child-components/register-subordinate-member/register-subordinate-member.component';
+import { RefLinkAccountComponent } from './content/ref-link-account/ref-link-account.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -28,9 +32,16 @@ const routes: Routes = [
       { path: 'pay-in-wallet', component: PayInWalletComponent },
       { path: 'withdraw-wallet', component: WithdrawWalletComponent },
       { path: 'lottery-main', component: LotteryMainComponent },
-   
-      
-
+      {
+        path: 'sales-agent',
+        component: SalesAgentComponent,
+      },
+      {
+        path: 'register-subordinate-member',
+        component: RegisterSubordinateMemberComponent,
+      },
+      { path: 'lotto-result', component: LottoResultComponent },
+      { path: 'ref-link', component: RefLinkAccountComponent },
     ],
   },
   { path: 'login', component: LoginComponent },

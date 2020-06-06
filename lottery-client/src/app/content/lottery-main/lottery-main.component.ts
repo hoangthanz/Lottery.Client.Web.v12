@@ -23,4 +23,9 @@ export class LotteryMainComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  xxx(){
+    console.log('xx');
+    alert('xx');
+  }
 }

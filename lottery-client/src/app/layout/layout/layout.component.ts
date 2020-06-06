@@ -90,7 +90,22 @@ export class LayoutComponent extends BaseComponentService implements OnInit {
   goToRuleScreen() {
     this.router.navigate['/rule'];
   }
+
+  
+  tranferToLottery() {
+    this.titleTop = 'Xổ số';
+  }
+
+
   tranferToAccount() {
     this.titleTop = 'Tài khoản';
+  }
+
+  tranferToSalesAgent() {
+    this.titleTop = 'Đại lý';
+  }
+
+  tranferToLottoResult() {
+    this.titleTop = 'Kết quả';
   }
 }
