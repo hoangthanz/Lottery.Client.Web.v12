@@ -82,6 +82,7 @@ import { LottoResultComponent } from './content/lotto-result/lotto-result.compon
 import { AseanLottoService } from './shared/services/asean-lotto/asean-lotto.service';
 import { RegisterSubordinateMemberComponent } from './content/sales-agent/child-components/register-subordinate-member/register-subordinate-member.component';
 import { RefLinkAccountComponent } from './content/ref-link-account/ref-link-account.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -106,7 +107,7 @@ export function tokenGetter() {
     SalesAgentComponent,
     LottoResultComponent,
     RegisterSubordinateMemberComponent,
-    RefLinkAccountComponent
+    RefLinkAccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -170,6 +171,7 @@ export function tokenGetter() {
 
     HttpClientModule,
     MatCarouselModule.forRoot(),
+    ClipboardModule
   ],
   providers: [
     { provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check' },
@@ -186,7 +188,7 @@ export function tokenGetter() {
       multi: true,
     },
     UserService,
-    AseanLottoService
+    AseanLottoService,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

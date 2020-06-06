@@ -33,7 +33,9 @@
             <mat-form-field floatLabel='always'>
               <mat-label>Tên đăng nhập</mat-label>
               <input matInput [(ngModel)]="userName">
-              <mat-icon matSuffix style="color: lightgray;">face</mat-icon>
+              <button mat-icon-button matSuffix style="color: lightgray;">
+                <mat-icon>face</mat-icon>
+              </button>
             </mat-form-field>
           </div>
 
@@ -43,8 +45,11 @@
           <div style="width: 90%;">
             <mat-form-field floatLabel='always'>
               <mat-label>Mật khẩu</mat-label>
-              <input matInput type="password" [(ngModel)]="password">
-              <mat-icon matSuffix style="color: lightgray;">vpn_key</mat-icon>
+              <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                style="color: lightgray;" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
             </mat-form-field>
           </div>
         </div>
@@ -71,7 +76,8 @@
 
         <div fxFlex="100%" class="image-center">
           <div style="width: 90%;">
-            <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke" [routerLink]="['../register']" routerLinkActive="
+            <button mat-flat-button style="width: 100%; background-color: #6C63FF; color: whitesmoke"
+              [routerLink]="['../register']" routerLinkActive="
             active">Đăng ký</button>
           </div>
         </div>

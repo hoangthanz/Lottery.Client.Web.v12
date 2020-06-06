@@ -1,0 +1,23 @@
+<div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+    style="margin-top: 15px;">
+
+    <div fxFlex="100%" class="button-center">
+        <mat-form-field floatLabel='always'>
+            <mat-label>Linh giới thiệu của bạn</mat-label>
+            <input matInput [value]="refLink" readOnly disabled>
+            <button mat-icon-button matSuffix style="color: lightgray;">
+                <mat-icon>file_copy</mat-icon>
+            </button>
+            <mat-hint style="color:red; text-align: center;" *ngIf="isCoppied">Đã sao chép đường dẫn thành công!</mat-hint>
+        </mat-form-field>
+
+    </div>
+    <div fxFlex="100%" class="button-center">
+        <button mat-flat-button class="button-size" [cdkCopyToClipboard]="refLink" (click)="copyLink()">
+            <mat-icon>link</mat-icon>
+            Sao chép
+        </button>
+    </div>
+
+
+</div>

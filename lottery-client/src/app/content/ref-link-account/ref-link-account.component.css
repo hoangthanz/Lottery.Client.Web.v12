@@ -1,0 +1,15 @@
+.button-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-size {
+  width: 95%;
+  background-color: #6c63ff;
+  color: whitesmoke;
+}
+
+mat-form-field{
+    width: 95%;
+}

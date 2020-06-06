@@ -14,6 +14,7 @@ import { CommonConst } from 'src/app/shared/const/common-const';
 })
 export class LoginComponent extends BaseComponentService implements OnInit {
   titleTop = 'Đăng nhập';
+  hide = true;
   userName: string;
   password: string;
   rememberMe: boolean = false;

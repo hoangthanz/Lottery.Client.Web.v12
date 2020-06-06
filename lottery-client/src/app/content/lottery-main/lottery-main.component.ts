@@ -28,4 +28,7 @@ export class LotteryMainComponent implements OnInit {
     console.log('xx');
     alert('xx');
   }
+
+
+  
 }

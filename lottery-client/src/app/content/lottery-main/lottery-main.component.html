@@ -51,7 +51,7 @@
 
 <div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
   style="margin-top: 15px; height: 10vh;">
-  <div fxFlex="94%">
+  <div fxFlex="94%" (click)="xxx()">
     <div style="width: 40%; height: 100%; float: left;">
       <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 100%; height: 100%;">
     </div>
@@ -93,13 +93,14 @@
   </div>
 </div>
 
-<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center" style="margin-top: 15px; height: 10vh;">
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+  style="margin-top: 15px; height: 10vh;">
   <div fxFlex="94%">
-    <div style="width: 40%; height: 100%; float: left;" (click)="xxx()">
-      <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 100%; height: 100%;" (click)="xxx()">
+    <div style="width: 40%; height: 100%; float: left;">
+      <img src="assets/svg/undraw_sync_files_xb3r.svg" style="width: 100%; height: 100%;">
     </div>
 
-    <div style="width: 60%; height: 100%;" class="image-center" (click)="xxx()">
+    <div style="width: 60%; height: 100%;" class="image-center">
       <mat-list>
         <mat-list-item style="font-size: small; color: grey; font-weight: 700;">Thừa Thiên Huế</mat-list-item>
         <mat-list-item style="font-size: x-small; font-style: italic; color: grey;">Mở thưởng thứ 2</mat-list-item>
