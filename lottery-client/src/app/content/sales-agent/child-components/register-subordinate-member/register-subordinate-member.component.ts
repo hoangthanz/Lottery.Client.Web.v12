@@ -37,6 +37,8 @@ export class RegisterSubordinateMemberComponent extends BaseComponentService
     );
 
     this.registerForm = new FormGroup({
+      firstName: new FormControl(''),
+      lastName: new FormControl(''),
       userName: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [
         Validators.required,

@@ -14,6 +14,8 @@ import { CurrencyPipe, DatePipe, Location } from '@angular/common';
 export class RegisterComponent extends BaseComponentService implements OnInit {
   titleTop = 'Đăng ký';
 
+  hidePassword = true;
+  hideTransactionPassword = true;
   registerForm: FormGroup;
   constructor(
     public toastr: ToastrService,
@@ -32,6 +34,8 @@ export class RegisterComponent extends BaseComponentService implements OnInit {
 
   initializeRegisterForm() {
     this.registerForm = new FormGroup({
+      firstName: new FormControl(''),
+      lastName: new FormControl(''),
       userName: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [
         Validators.required,

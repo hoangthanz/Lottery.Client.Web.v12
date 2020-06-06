@@ -5,11 +5,11 @@
     </div>
 
     <div fxFlex="100%" class="image-top-avatar" style="margin-top: 10px;">
-        <b style="color: whitesmoke;">HoangThanZ</b>
+        <b style="color: whitesmoke;">{{ user?.UserName }}</b>
     </div>
 
     <div fxFlex="100%" class="image-top-avatar" style="margin-top: 10px;">
-        <span style="color: whitesmoke;">6.000 Xu</span>
+        <span style="color: whitesmoke;">{{ wallet?.Coin | number }} Xu</span>
     </div>
 
     <div fxFlex="100%" class="image-top-avatar">

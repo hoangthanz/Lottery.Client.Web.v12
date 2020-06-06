@@ -10,7 +10,7 @@ export class LoginService {
 
   login(user) {
     return this.httpClient.post(
-      `${environment.lotteryDomain}/api/Users/authenticate`,
+      `${environment.lotteryDomain}/api/Users/authenticate-for-client`,
       user
     );
   }

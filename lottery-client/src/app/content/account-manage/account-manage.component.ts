@@ -14,8 +14,9 @@ export class AccountManageComponent extends BaseComponentService
   implements OnInit {
   avatar: string = 'assets/svg/undraw_profile_pic_ic5t.svg';
 
-  user = {};
+  user: any;
 
+  wallet: any;
   constructor(
     private userService: UserService,
     public toastr: ToastrService,
@@ -26,7 +27,13 @@ export class AccountManageComponent extends BaseComponentService
     super(toastr, router, currencyPipe, datePipe);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.user = this.ConvertStringToObject(
+      localStorage.getItem('tokenPayload')
+    );
+
+    this.wallet = this.ConvertStringToObject(this.user.Wallet);
+  }
 
   logout() {
     localStorage.clear();

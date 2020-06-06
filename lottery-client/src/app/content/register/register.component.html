@@ -27,6 +27,24 @@
           <div fxFlex="100%" class="image-center">
             <div style="width: 90%;">
               <mat-form-field floatLabel='always'>
+                <mat-label>Họ</mat-label>
+                <input matInput formControlName="firstName">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex="100%" class="image-center">
+            <div style="width: 90%;">
+              <mat-form-field floatLabel='always'>
+                <mat-label>Tên</mat-label>
+                <input matInput formControlName="lastName">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div fxFlex="100%" class="image-center">
+            <div style="width: 90%;">
+              <mat-form-field floatLabel='always'>
                 <mat-label>Tên đăng nhập</mat-label>
                 <input matInput formControlName="userName" required>
               </mat-form-field>
@@ -37,7 +55,11 @@
             <div style="width: 90%;">
               <mat-form-field floatLabel='always'>
                 <mat-label>Mật khẩu</mat-label>
-                <input matInput type="password" formControlName="password" required>
+                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" required>
+                <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" style="color: lightgray;"
+                  [attr.aria-pressed]="hidePassword">
+                  <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
                 <mat-error *ngIf="!registerForm.hasError('minLength') || !registerForm.hasError('pattern')">
                   * ít nhất 8 kí tự, ít nhất 1 chữ hoa và 1 kí tự đặc biệt
                 </mat-error>
@@ -49,7 +71,12 @@
             <div style="width: 90%;">
               <mat-form-field floatLabel='always'>
                 <mat-label>Mật khẩu thanh toán</mat-label>
-                <input matInput type="password" formControlName="transactionPassword" required>
+                <input matInput [type]="hideTransactionPassword ? 'password' : 'text'"
+                  formControlName="transactionPassword" required>
+                <button mat-icon-button matSuffix (click)="hideTransactionPassword = !hideTransactionPassword"
+                  style="color: lightgray;" [attr.aria-pressed]="hideTransactionPassword">
+                  <mat-icon>{{hideTransactionPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
               </mat-form-field>
             </div>
           </div>
