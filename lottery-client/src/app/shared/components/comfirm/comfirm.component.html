@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Thông báo</h1>
+<mat-divider></mat-divider>
+<div mat-dialog-content>
+  <p>Bạn có chắc chắn muốn <span style="font-weight:bold">{{ message }}</span> này?</p>
+  <span *ngIf="subMessage" style="color: red;"> Chú ý: {{ subMessage }}</span>
+</div>
+
+<mat-dialog-actions align="end">
+
+  <button mat-button [color]="colorCancel" style="float: right" mat-dialog-close matTooltip="Hủy bỏ thao tác"
+    mat-dialog-close [matTooltipPosition]="matTooltipPosition">
+    <mat-icon>close</mat-icon>
+    Hủy bỏ
+  </button>
+  <button mat-flat-button [color]="colorAccess" style="float: right" [matTooltip]="matTooltip" [mat-dialog-close]="true"
+    [matTooltipPosition]="matTooltipPosition">
+    <mat-icon>check</mat-icon>
+    Đồng ý
+  </button>
+</mat-dialog-actions>

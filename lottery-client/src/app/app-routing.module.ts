@@ -15,6 +15,7 @@ import { SalesAgentComponent } from './content/sales-agent/sales-agent.component
 import { LottoResultComponent } from './content/lotto-result/lotto-result.component';
 import { RegisterSubordinateMemberComponent } from './content/sales-agent/child-components/register-subordinate-member/register-subordinate-member.component';
 import { RefLinkAccountComponent } from './content/ref-link-account/ref-link-account.component';
+import { BetComponent } from './content/bet/bet.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -46,6 +47,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'bet', component: BetComponent },
 ];
 
 @NgModule({

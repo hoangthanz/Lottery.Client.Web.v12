@@ -83,6 +83,13 @@ import { AseanLottoService } from './shared/services/asean-lotto/asean-lotto.ser
 import { RegisterSubordinateMemberComponent } from './content/sales-agent/child-components/register-subordinate-member/register-subordinate-member.component';
 import { RefLinkAccountComponent } from './content/ref-link-account/ref-link-account.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { BetComponent } from './content/bet/bet.component';
+import { ComfirmComponent } from './shared/components/comfirm/comfirm.component';
+
+import {
+  MatBottomSheetModule,
+  MAT_BOTTOM_SHEET_DEFAULT_OPTIONS,
+} from '@angular/material/bottom-sheet';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -108,6 +115,8 @@ export function tokenGetter() {
     LottoResultComponent,
     RegisterSubordinateMemberComponent,
     RefLinkAccountComponent,
+    BetComponent,
+    ComfirmComponent,
   ],
   imports: [
     BrowserModule,
@@ -171,11 +180,16 @@ export function tokenGetter() {
 
     HttpClientModule,
     MatCarouselModule.forRoot(),
-    ClipboardModule
+    ClipboardModule,
+    MatBottomSheetModule,
   ],
   providers: [
     { provide: MAT_CHECKBOX_CLICK_ACTION, useValue: 'check' },
     { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+    {
+      provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS,
+      useValue: { hasBackdrop: false },
+    },
     DatePipe,
     CurrencyPipe,
     DecimalPipe,
@@ -190,6 +204,7 @@ export function tokenGetter() {
     UserService,
     AseanLottoService,
   ],
+  entryComponents: [ComfirmComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
