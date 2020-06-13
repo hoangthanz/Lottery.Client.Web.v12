@@ -1,3 +1,6 @@
+import { EditBankComponent } from './content/banks/edit-bank/edit-bank.component';
+import { AddBankComponent } from './content/banks/add-bank/add-bank.component';
+import { BanksComponent } from './content/banks/banks.component';
 import { PayInWalletComponent } from './content/pay-in-wallet/pay-in-wallet.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -85,11 +88,11 @@ import { RefLinkAccountComponent } from './content/ref-link-account/ref-link-acc
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { BetComponent } from './content/bet/bet.component';
 import { ComfirmComponent } from './shared/components/comfirm/comfirm.component';
-
 import {
   MatBottomSheetModule,
   MAT_BOTTOM_SHEET_DEFAULT_OPTIONS,
 } from '@angular/material/bottom-sheet';
+import { BankCardService } from './shared/services/bank-card.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -117,6 +120,9 @@ export function tokenGetter() {
     RefLinkAccountComponent,
     BetComponent,
     ComfirmComponent,
+    BanksComponent,
+    AddBankComponent,
+    EditBankComponent
   ],
   imports: [
     BrowserModule,
@@ -196,6 +202,7 @@ export function tokenGetter() {
     BaseComponentService,
     LoginService,
     AuthGuardService,
+    BankCardService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
@@ -204,8 +211,12 @@ export function tokenGetter() {
     UserService,
     AseanLottoService,
   ],
-  entryComponents: [ComfirmComponent],
+  entryComponents: [
+    ComfirmComponent,
+    AddBankComponent,
+    EditBankComponent
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule {}
+export class AppModule { }

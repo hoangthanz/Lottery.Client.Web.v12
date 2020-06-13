@@ -1,0 +1,53 @@
+<div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center">
+
+  <div fxFlex="95%" fxLayoutWrap fxLayoutGap="1%">
+    <ul>
+      <li>Vui lòng đăng ký tên chủ tài khoản chính xác, trùng khớp với <span style="color: red;">Chứng Minh thư Nhân
+          Nhân.</span></li>
+      <li style="margin-top: 2%;">Bạn có thể thêm tối đa <span style="color: red;">5 tài khoản Ngân hàng.</span></li>
+      <li style="margin-top: 2%;">Từ Tài Khoản <span style="color: red;">thứ 2</span> trở đi, phải trùng tên chủ Tài
+        Khoản với Tài Khoản đầu tiên.</li>
+      <li style="margin-top: 2%;">Các vấn đề phát sinh từ việc đăng ký thông tin không chính xác, <span
+          style="color: red;">chúng tôi hoàn toàn không chịu trách nhiệm.</span> </li>
+    </ul>
+  </div>
+
+  <div fxFlex="95%" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center">
+    <button mat-flat-button type="button" color="primary" (click)="add_bank()">
+      Đăng Ký Tài Khoản Ngân Hàng
+    </button>
+  </div>
+
+  <div fxFlex="95%" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center">
+    <h4 style="color: red;">Danh Sách Tài Khoản Ngân Hàng</h4>
+  </div>
+
+  <div fxFlex.xs="95%" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center" *ngFor="let bank of banks">
+    <div fxLayout.xs="column" style="border-style: solid; border-color: #6C63FF; width: 80%; height: 140px;">
+      
+      <div fxLayout.xs="row" style="background-color:#6C63FF;">
+        <div fxFlex.xs="78%" style=" height: 40px; text-align: center; color: whitesmoke; line-height: 40px;">
+          {{ bank.bankName }}
+        </div>
+        <div fxFlex.xs="15%">
+          <button mat-flat-button type="button" color="warn" (click)="openDelete_BankDialog(bank.id)">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <div fxLayout="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+          style="height: 30px; margin-top: 10px;">
+          <div fxFlex="30%" style="padding-left: 15px;">Tên TK:</div>
+          <div fxFlex style="padding-left: 15px;">{{ bank.fullNameOwner }}</div>
+        </div>
+        <div fxLayout="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+          style="height: 30px; margin-top: 10px;">
+          <div fxFlex="30%" style="padding-left: 15px;">Số TK:</div>
+          <div fxFlex style="padding-left: 15px;">{{ bank.bankAccountNumber }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
