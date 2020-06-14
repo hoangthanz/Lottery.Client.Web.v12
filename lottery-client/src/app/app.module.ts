@@ -1,3 +1,4 @@
+import { ChooseAQuickNumberComponent } from './content/bet-methods/choose-a-quick-number/choose-a-quick-number.component';
 import { PayInWalletComponent } from './content/pay-in-wallet/pay-in-wallet.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -90,6 +91,8 @@ import {
   MatBottomSheetModule,
   MAT_BOTTOM_SHEET_DEFAULT_OPTIONS,
 } from '@angular/material/bottom-sheet';
+import { ChooseTheNumberComponent } from './content/bet-methods/choose-the-number/choose-the-number.component';
+import { EnterTheNumberComponent } from './content/bet-methods/enter-the-number/enter-the-number.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -117,6 +120,9 @@ export function tokenGetter() {
     RefLinkAccountComponent,
     BetComponent,
     ComfirmComponent,
+    ChooseAQuickNumberComponent,
+    ChooseTheNumberComponent,
+    EnterTheNumberComponent
   ],
   imports: [
     BrowserModule,

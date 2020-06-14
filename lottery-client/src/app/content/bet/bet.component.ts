@@ -13,6 +13,137 @@ import { ComfirmComponent } from 'src/app/shared/components/comfirm/comfirm.comp
   styleUrls: ['./bet.component.css'],
 })
 export class BetComponent extends BaseComponentService implements OnInit {
+
+
+
+
+  typeSelected;
+
+  codeSelected;
+
+
+  lottos = [
+    {
+      name: 'Bao lô',
+      code: 'bao-lo',
+      types: [
+        {
+          name : 'Lô 2 số',
+          code: 0
+        },
+        {
+          name : 'Lô 2 số đầu',
+          code: 1
+        },
+        {
+          name : 'Lô 2 số 1K',
+          code: 2
+        },
+        {
+          name : 'Lô 3 số',
+          code: 3
+        },
+        {
+          name : 'Lô 4 số',
+          code: 4
+        },
+      ]
+    },
+    {
+      name: 'Lô xiên',
+      code: 'lo-xien',
+      types: [
+        {
+          name : 'Xiên 2',
+          code: 0
+        },
+        {
+          name : 'Xiên 3',
+          code: 1
+        },
+        {
+          name : 'Xiên 4',
+          code: 2
+        },
+      ]
+    },
+    {
+      name: 'Đánh đề',
+      code: 'danh-de',
+      types: [
+        {
+          name : 'Đề đặc biệt',
+          code: 0
+        },
+        {
+          name : 'Đề đầu đặc biệt',
+          code: 1
+        },
+        {
+          name : 'Đề giải 7',
+          code: 2
+        },
+        {
+          name : 'Đề giải nhất',
+          code: 3
+        }
+      ]
+    },
+    {
+      name: 'Đầu đuôi',
+      code: 'dau-duoi',
+      types: [
+        {
+          name : 'Đầu',
+          code: 0
+        },
+        {
+          name : 'Đuôi',
+          code: 1
+        }
+      ]
+    },
+    {
+      name: '3 Càng',
+      code: '3-cang-dac-biet',
+      types: [
+        {
+          name : '3 Càng đặc biệt',
+          code: 0
+        }
+      ]
+    },
+    {
+      name: '4 Càng',
+      code: '4-cang-dac-biet',
+      types: [
+        {
+          name : '4 Càng đặc biệt',
+          code: 1
+        }
+      ]
+    },
+    {
+      name: 'Lô trượt - Xiên trượt',
+      code: 'lo-truot-xien-truot',
+      types: [
+        {
+          name : 'Trượt xiên 4',
+          code: 3
+        },
+        {
+          name : 'Trượt xiên 8',
+          code: 4
+        },  {
+          name : 'Trượt xiên 10',
+          code: 5
+        }
+
+      ]
+    }
+  ];
+
+
   constructor(
     private loginService: LoginService,
     public toastr: ToastrService,
