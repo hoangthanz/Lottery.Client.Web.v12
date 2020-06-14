@@ -97,6 +97,7 @@ import { ChooseTheNumberComponent } from './content/bet-methods/choose-the-numbe
 import { EnterTheNumberComponent } from './content/bet-methods/enter-the-number/enter-the-number.component';
 import { BankCardService } from './shared/services/bank-card.service';
 import { WalletService } from './shared/services/user/wallet.service';
+import { SignalRService } from './shared/services/signal-r.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -218,6 +219,7 @@ export function tokenGetter() {
     UserService,
     AseanLottoService,
     WalletService,
+    SignalRService
   ],
   entryComponents: [ComfirmComponent, AddBankComponent, EditBankComponent],
   bootstrap: [AppComponent],

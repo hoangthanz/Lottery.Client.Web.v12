@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { WalletService } from 'src/app/shared/services/user/wallet.service';
+import { SignalRService } from 'src/app/shared/services/signal-r.service';
 
 @Component({
   selector: 'app-account-manage',
@@ -24,7 +25,8 @@ export class AccountManageComponent extends BaseComponentService
     public toastr: ToastrService,
     public router: Router,
     public currencyPipe: CurrencyPipe,
-    public datePipe: DatePipe
+    public datePipe: DatePipe,
+    public signalRService: SignalRService
   ) {
     super(toastr, router, currencyPipe, datePipe);
     this.user = this.ConvertStringToObject(
@@ -33,6 +35,8 @@ export class AccountManageComponent extends BaseComponentService
   }
 
   ngOnInit() {
+    this.signalRService.startConnection();
+    this.signalRService.addTransferWalletDataListener();
     this.getWalletByUser(this.user.Id);
   }
 
