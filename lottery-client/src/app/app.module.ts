@@ -1,4 +1,5 @@
 import { ChooseAQuickNumberComponent } from './content/bet-methods/choose-a-quick-number/choose-a-quick-number.component';
+import { DepositHistoryComponent } from './content/pay-in-wallet/deposit-history/deposit-history.component';
 import { EditBankComponent } from './content/banks/edit-bank/edit-bank.component';
 import { AddBankComponent } from './content/banks/add-bank/add-bank.component';
 import { BanksComponent } from './content/banks/banks.component';
@@ -98,6 +99,9 @@ import { EnterTheNumberComponent } from './content/bet-methods/enter-the-number/
 import { BankCardService } from './shared/services/bank-card.service';
 import { WalletService } from './shared/services/user/wallet.service';
 import { SignalRService } from './shared/services/signal-r.service';
+import { DepositComponent } from './content/pay-in-wallet/deposit/deposit.component';
+import { TransactionsService } from './shared/services/Transactions.service';
+import { TransactionsHistoryService } from './shared/services/Transactions-History.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -131,6 +135,8 @@ export function tokenGetter() {
     BanksComponent,
     AddBankComponent,
     EditBankComponent,
+    DepositComponent,
+    DepositHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -211,6 +217,8 @@ export function tokenGetter() {
     LoginService,
     AuthGuardService,
     BankCardService,
+    TransactionsService,
+    TransactionsHistoryService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
