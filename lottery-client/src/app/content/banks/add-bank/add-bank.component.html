@@ -1,0 +1,74 @@
+<h1 mat-dialog-title>Thêm Tài Khoản Ngân Hàng</h1>
+<hr>
+
+<form [formGroup]="bankForm" (ngSubmit)="submit()">
+
+  <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center">
+
+    <div fxFlex="90%" style="text-align: center;">
+      <mat-form-field>
+        <mat-label>Chọn Ngân Hàng</mat-label>
+        <mat-select formControlName="select_bankName" style="text-align: center;"
+          (selectionChange)="changeBank($event.value)">
+          <mat-option *ngFor="let item of banks" [value]="item" style="text-align: center;">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="90%" style="text-align: center;" >
+      <mat-form-field>
+        <mat-label>Tên Ngân Hàng</mat-label>
+        <input matInput formControlName="bankName">
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="90%" style="text-align: center;">
+      <mat-form-field>
+        <mat-label>Chi Nhánh</mat-label>
+        <input matInput formControlName="bankBranch">
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="90%" style="text-align: center;">
+      <mat-form-field>
+        <mat-label>Họ Tên Chủ Tài Khoản</mat-label>
+        <input matInput formControlName="fullNameOwner">
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="90%" style="text-align: center;">
+      <mat-form-field>
+        <mat-label>Số Tài Khoản</mat-label>
+        <input matInput formControlName="bankAccountNumber">
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="90%" style="text-align: center;">
+      <mat-form-field>
+        <mat-label>Nhập Lại Số Tài Khoản</mat-label>
+        <input matInput formControlName="confirmBankAccountNumber">
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="90%" style="text-align: center;">
+      <mat-form-field>
+        <mat-label>Mật Khẩu Thanh Toán</mat-label>
+        <input matInput formControlName="transactionPassword">
+      </mat-form-field>
+    </div>
+
+  </div>
+
+  <mat-card-actions align="end">
+    <button mat-button style="float: right" mat-dialog-close tabindex="-1" matTooltip="Hủy bỏ thao tác">
+      <mat-icon>close</mat-icon>
+      Hủy bỏ
+    </button>
+    <button mat-flat-button color="accent" style="float: right" type="submit" matTooltip="Xác nhận">
+      <mat-icon>check</mat-icon>
+      Xác nhận
+    </button>
+  </mat-card-actions>
+</form>

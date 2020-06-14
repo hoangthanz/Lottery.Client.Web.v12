@@ -1,3 +1,4 @@
+import { BanksComponent } from './content/banks/banks.component';
 import { MessageChatComponent } from './content/message-chat/message-chat.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -31,6 +32,7 @@ const routes: Routes = [
       { path: 'personal-information', component: PersonalInformationComponent },
       { path: 'message-chat', component: MessageChatComponent },
       { path: 'pay-in-wallet', component: PayInWalletComponent },
+      { path: 'banks', component: BanksComponent },
       { path: 'withdraw-wallet', component: WithdrawWalletComponent },
       { path: 'lottery-main', component: LotteryMainComponent },
       {
