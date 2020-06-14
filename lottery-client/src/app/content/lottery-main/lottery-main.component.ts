@@ -24,11 +24,12 @@ export class LotteryMainComponent implements OnInit {
 
   ngOnInit() {}
 
-  xxx(){
+  xxx() {
     console.log('xx');
     alert('xx');
   }
 
-
-  
+  tranferToBet(code) {
+    localStorage.setItem('bet_code', code);
+  }
 }

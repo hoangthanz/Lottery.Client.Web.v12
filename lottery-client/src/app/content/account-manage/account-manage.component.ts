@@ -4,6 +4,7 @@ import { BaseComponentService } from 'src/app/shared/components/base-components/
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user/user.service';
+import { WalletService } from 'src/app/shared/services/user/wallet.service';
 
 @Component({
   selector: 'app-account-manage',
@@ -19,20 +20,20 @@ export class AccountManageComponent extends BaseComponentService
   wallet: any;
   constructor(
     private userService: UserService,
+    private walletService: WalletService,
     public toastr: ToastrService,
     public router: Router,
     public currencyPipe: CurrencyPipe,
     public datePipe: DatePipe
   ) {
     super(toastr, router, currencyPipe, datePipe);
-  }
-
-  ngOnInit() {
     this.user = this.ConvertStringToObject(
       localStorage.getItem('tokenPayload')
     );
+  }
 
-    this.wallet = this.ConvertStringToObject(this.user.Wallet);
+  ngOnInit() {
+    this.getWalletByUser(this.user.Id);
   }
 
   logout() {
@@ -42,5 +43,18 @@ export class AccountManageComponent extends BaseComponentService
 
   moveToPersonalInformation() {
     this.GoTo('personal-information');
+  }
+
+  getWalletByUser(userId: string) {
+    this.walletService.getWalletByUser(userId).subscribe(
+      (response) => {
+        if (response) {
+          this.wallet = response;
+        }
+      },
+      (error) => {
+        this.ShowResponseMessage(error);
+      }
+    );
   }
 }

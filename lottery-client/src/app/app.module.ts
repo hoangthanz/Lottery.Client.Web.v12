@@ -96,6 +96,7 @@ import {
 import { ChooseTheNumberComponent } from './content/bet-methods/choose-the-number/choose-the-number.component';
 import { EnterTheNumberComponent } from './content/bet-methods/enter-the-number/enter-the-number.component';
 import { BankCardService } from './shared/services/bank-card.service';
+import { WalletService } from './shared/services/user/wallet.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -128,7 +129,7 @@ export function tokenGetter() {
     EnterTheNumberComponent,
     BanksComponent,
     AddBankComponent,
-    EditBankComponent
+    EditBankComponent,
   ],
   imports: [
     BrowserModule,
@@ -216,13 +217,10 @@ export function tokenGetter() {
     },
     UserService,
     AseanLottoService,
+    WalletService,
   ],
-  entryComponents: [
-    ComfirmComponent,
-    AddBankComponent,
-    EditBankComponent
-  ],
+  entryComponents: [ComfirmComponent, AddBankComponent, EditBankComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

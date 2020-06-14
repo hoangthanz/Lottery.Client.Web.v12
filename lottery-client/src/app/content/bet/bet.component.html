@@ -9,22 +9,51 @@
         </button>
       </div>
       <div fxFlex="33%" fxFlex.xs="33%">
-        <span style="color: whitesmoke;">Đặt cược</span>
+        <span style="color: whitesmoke;"></span>
       </div>
-      <div fxFlex="33%" fxFlex.xs="33%"> </div>
+      <div fxFlex="33%" fxFlex.xs="33%" align="end">
+        <button mat-button style="color: whitesmoke;" [matMenuTriggerFor]="afterMenu">
+          <mat-icon>transform</mat-icon>
+        </button>
+        <mat-menu #afterMenu="matMenu" xPosition="after">
+          <button mat-menu-item *ngFor="let l of lottos" (click)="ChooseFatherType(l.code)"> {{ l.name }}</button>
+        </mat-menu>
+      </div>
     </div>
 
   </mat-toolbar>
 
   <mat-sidenav-container class="layout-container" autosize>
     <mat-sidenav-content>
-      <div style="margin-top: 10px;" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%"
-        fxLayoutAlign="right">
-        <div fxFlex="30%">
-          <button mat-button color="accent">Đổi kiểu cược</button>
+
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center"
+        style="width: 100%;">
+        <div fxFlex="100%" fxFlex.xs="100%">
+          <div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center" style="margin-top: 10px;">
+            <div fxFlex="50%" fxFlex.xs="50%" style="text-align: left; font-size: 1.1rem; color: red; padding-left: 10px;">
+              <b>{{ lottoTypeSelected?.name }}</b>
+            </div>
+            <div fxFlex="50%" fxFlex.xs="50%" style="text-align: left; font-size: 1.1rem; color: red; font-style: italic;" align="end">
+              đang sử dụng: {{ methodTypeNameSelected }}
+            </div>
+          </div>
         </div>
+
+        <div fxFlex="100%" fxFlex.xs="100%" class="button-center">
+          <div style=" width: 90%;">
+            <mat-form-field>
+              <mat-label>Phương thức cược</mat-label>
+              <mat-select [(ngModel)]="methodSelected">
+                <mat-option *ngFor="let method of methodTypeList" [value]="method.code">
+                  {{ method.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
       </div>
-      <router-outlet></router-outlet>
+
     </mat-sidenav-content>
   </mat-sidenav-container>
 
