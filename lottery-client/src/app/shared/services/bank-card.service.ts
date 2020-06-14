@@ -19,4 +19,11 @@ export class BankCardService {
   delete_bank(id) {
     return this.httpClient.delete(`${environment.lotteryDomain}/api/BankCards/${id}`);
   }
+
+
+
+  //  Bank admin
+  getAll_OwnerBank() {
+    return this.httpClient.get(`${environment.lotteryDomain}/api/OwnerBanks`);
+  }
 }

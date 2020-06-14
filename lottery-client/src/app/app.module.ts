@@ -1,3 +1,4 @@
+import { DepositHistoryComponent } from './content/pay-in-wallet/deposit-history/deposit-history.component';
 import { EditBankComponent } from './content/banks/edit-bank/edit-bank.component';
 import { AddBankComponent } from './content/banks/add-bank/add-bank.component';
 import { BanksComponent } from './content/banks/banks.component';
@@ -93,6 +94,9 @@ import {
   MAT_BOTTOM_SHEET_DEFAULT_OPTIONS,
 } from '@angular/material/bottom-sheet';
 import { BankCardService } from './shared/services/bank-card.service';
+import { DepositComponent } from './content/pay-in-wallet/deposit/deposit.component';
+import { TransactionsService } from './shared/services/Transactions.service';
+import { TransactionsHistoryService } from './shared/services/Transactions-History.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -122,7 +126,9 @@ export function tokenGetter() {
     ComfirmComponent,
     BanksComponent,
     AddBankComponent,
-    EditBankComponent
+    EditBankComponent,
+    DepositComponent,
+    DepositHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -203,6 +209,8 @@ export function tokenGetter() {
     LoginService,
     AuthGuardService,
     BankCardService,
+    TransactionsService,
+    TransactionsHistoryService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

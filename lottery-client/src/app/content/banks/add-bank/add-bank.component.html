@@ -41,14 +41,14 @@
     <div fxFlex="90%" style="text-align: center;">
       <mat-form-field>
         <mat-label>Số Tài Khoản</mat-label>
-        <input matInput formControlName="bankAccountNumber">
+        <input matInput (keypress)="numberOnly($event)" formControlName="bankAccountNumber">
       </mat-form-field>
     </div>
 
     <div fxFlex="90%" style="text-align: center;">
       <mat-form-field>
         <mat-label>Nhập Lại Số Tài Khoản</mat-label>
-        <input matInput formControlName="confirmBankAccountNumber">
+        <input matInput (keypress)="numberOnly($event)" formControlName="confirmBankAccountNumber">
       </mat-form-field>
     </div>
 
