@@ -13,7 +13,7 @@
   </div>
 
   <div fxFlex="95%" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center">
-    <button mat-flat-button type="button" color="primary" (click)="add_bank()">
+    <button mat-flat-button type="button" style="background-color: #6C63FF; color: whitesmoke;" (click)="add_bank()">
       Đăng Ký Tài Khoản Ngân Hàng
     </button>
   </div>
@@ -23,14 +23,15 @@
   </div>
 
   <div fxFlex.xs="95%" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center" *ngFor="let bank of banks">
-    <div fxLayout.xs="column" style="border-style: solid; border-color: #6C63FF; width: 80%; height: 140px;">
-      
-      <div fxLayout.xs="row" style="background-color:#6C63FF;">
-        <div fxFlex.xs="78%" style=" height: 40px; text-align: center; color: whitesmoke; line-height: 40px;">
+    <div fxLayout.xs="column" style="border-style: solid; border-color: #6C63FF; width: 90%; height: 140px;">
+
+      <div fxLayout.xs="row" fxLayout="row" style="background-color:#6C63FF;">
+        <div fxFlex.xs="80%" fxFlex="70%"
+          style=" height: 40px; text-align: center; color: whitesmoke; line-height: 40px;">
           {{ bank.bankName }}
         </div>
-        <div fxFlex.xs="15%">
-          <button mat-flat-button type="button" color="warn" (click)="openDelete_BankDialog(bank.id)">
+        <div fxFlex.xs fxFlex align="end">
+          <button mat-button type="button" (click)="openDelete_BankDialog(bank.id)" style="height: 40px; color: whitesmoke;">
             <mat-icon>clear</mat-icon>
           </button>
         </div>
