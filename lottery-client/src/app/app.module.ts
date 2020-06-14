@@ -1,4 +1,5 @@
 import { DepositHistoryComponent } from './content/pay-in-wallet/deposit-history/deposit-history.component';
+import { ChooseAQuickNumberComponent } from './content/bet-methods/choose-a-quick-number/choose-a-quick-number.component';
 import { EditBankComponent } from './content/banks/edit-bank/edit-bank.component';
 import { AddBankComponent } from './content/banks/add-bank/add-bank.component';
 import { BanksComponent } from './content/banks/banks.component';
@@ -93,10 +94,14 @@ import {
   MatBottomSheetModule,
   MAT_BOTTOM_SHEET_DEFAULT_OPTIONS,
 } from '@angular/material/bottom-sheet';
+import { ChooseTheNumberComponent } from './content/bet-methods/choose-the-number/choose-the-number.component';
+import { EnterTheNumberComponent } from './content/bet-methods/enter-the-number/enter-the-number.component';
 import { BankCardService } from './shared/services/bank-card.service';
 import { DepositComponent } from './content/pay-in-wallet/deposit/deposit.component';
 import { TransactionsService } from './shared/services/Transactions.service';
 import { TransactionsHistoryService } from './shared/services/Transactions-History.service';
+import { WalletService } from './shared/services/user/wallet.service';
+import { SignalRService } from './shared/services/signal-r.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -124,6 +129,9 @@ export function tokenGetter() {
     RefLinkAccountComponent,
     BetComponent,
     ComfirmComponent,
+    ChooseAQuickNumberComponent,
+    ChooseTheNumberComponent,
+    EnterTheNumberComponent,
     BanksComponent,
     AddBankComponent,
     EditBankComponent,
@@ -218,13 +226,11 @@ export function tokenGetter() {
     },
     UserService,
     AseanLottoService,
+    WalletService,
+    SignalRService
   ],
-  entryComponents: [
-    ComfirmComponent,
-    AddBankComponent,
-    EditBankComponent
-  ],
+  entryComponents: [ComfirmComponent, AddBankComponent, EditBankComponent],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

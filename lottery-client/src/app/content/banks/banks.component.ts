@@ -48,7 +48,9 @@ export class BanksComponent extends BaseComponentService implements OnInit {
       height: this.innerWidth < 768 ? "90vh" : "80vh",
     })
     .afterClosed()
-    .subscribe((result) => {});
+    .subscribe((result) => {
+      this.getAll_bank();
+    });
   }
 
   openDelete_BankDialog(id)
