@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DatePipe, CurrencyPipe } from '@angular/common';
 import { BaseComponentService } from 'src/app/shared/components/base-components/base-component.service';
 import { ToastrService } from 'ngx-toastr';
@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { WalletService } from 'src/app/shared/services/user/wallet.service';
 import { SignalRService } from 'src/app/shared/services/signal-r.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-account-manage',
@@ -13,12 +14,15 @@ import { SignalRService } from 'src/app/shared/services/signal-r.service';
   styleUrls: ['./account-manage.component.css'],
 })
 export class AccountManageComponent extends BaseComponentService
-  implements OnInit {
+  implements OnInit, OnDestroy {
   avatar: string = 'assets/svg/undraw_profile_pic_ic5t.svg';
 
   user: any;
 
   wallet: any;
+
+  walletSubscription: Subscription;
+
   constructor(
     private userService: UserService,
     private walletService: WalletService,
@@ -32,6 +36,11 @@ export class AccountManageComponent extends BaseComponentService
     this.user = this.ConvertStringToObject(
       localStorage.getItem('tokenPayload')
     );
+    this.onWalletListener();
+  }
+
+  ngOnDestroy() {
+    this.walletSubscription?.unsubscribe();
   }
 
   ngOnInit() {
@@ -60,5 +69,15 @@ export class AccountManageComponent extends BaseComponentService
         this.ShowResponseMessage(error);
       }
     );
+  }
+
+  private onWalletListener() {
+    this.walletSubscription = this.signalRService?.walletTargetListener
+      .asObservable()
+      .subscribe((userId: string) => {
+        if (userId) {
+          this.getWalletByUser(userId);
+        }
+      });
   }
 }
