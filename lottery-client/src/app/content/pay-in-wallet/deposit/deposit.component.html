@@ -9,14 +9,15 @@
             chúng tôi sẽ không chịu trách nhiệm về những khoản tiền và những khiếu nại này.</span></li>
         <li style="margin-top: 2%;">Quý khách nạp tiền nhiều lần trong một ngày vui lòng nạp số tiền khác nhau mỗi lần
           để được xác nhận nhanh nhất có thể.</li>
-        <li style="margin-top: 2%;">Số tiền nạp tiền tối thiểu mỗi lần là <span style="color: red;">từ 200.000 VNĐ trở lên </span></li>
+        <li style="margin-top: 2%;">Số tiền nạp tiền tối thiểu mỗi lần là <span style="color: red;">từ 200.000 VNĐ trở
+            lên </span></li>
         <li style="margin-top: 2%;">Yêu cầu xử lý nạp tiền của bạn sẽ được xử lý trong vòng khoảng 5p'. Sau đó, bạn có
           thể làm mới trang web của chúng tôi để kiểm tra số dư trên tài khoản.</li>
       </ul>
     </div>
 
     <div fxFlex="95%" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center">
-      <button mat-flat-button type="button" color="primary" (click)="show_deposit()">
+      <button mat-flat-button type="button" color="warn" (click)="show_deposit()">
         Tôi đã hiểu !
       </button>
     </div>
@@ -27,13 +28,13 @@
       <h4 style="color: red;">Thông Tin Nạp Tiền</h4>
     </div>
 
-    <div fxLayout.xs="column" fxFlex="95%" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center">
+    <div fxLayout.xs="column" fxFlex="95%" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
       <div style="width: 90%;" style="text-align: center;">
         <mat-form-field>
           <mat-label>Chọn Ngân Hàng</mat-label>
-          <mat-select style="text-align: center;" (selectionChange)="changeBank($event.value)">
+          <mat-select (selectionChange)="changeBank($event.value)" [(ngModel)]="ownerBankSelected">
             <mat-option *ngFor="let item of ownerBanks" [value]="item" style="text-align: center;">
-              {{item.bankName}}
+              {{ item.bankName }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -42,7 +43,8 @@
       <!-- Thong tin NH nạp tiền -->
       <div fxFlex.xs="95%" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center" *ngIf="isBank">
         <div fxLayout.xs="column" style="border-style: solid; border-color: #6C63FF; width: 90%;">
-          <div fxFlex.xs="100%" style=" height: 40px; text-align: center;background-color: #6C63FF;  color: whitesmoke; line-height: 40px;">
+          <div fxFlex.xs="100%"
+            style=" height: 40px; background-color: #6C63FF;  color: whitesmoke; line-height: 40px;">
             {{ bank.bankName }}
           </div>
 
@@ -83,12 +85,13 @@
       </div>
 
       <div style="text-align: center;" *ngIf="isBank">
-        <button mat-flat-button type="button" color="primary" (click)="submit()" style="margin-right: 30px;">
-          Xác nhận Nạp
+        <button mat-button type="button" (click)="cancel()" style="margin-right: 10px;">
+          Hủy bỏ
         </button>
-        <button mat-flat-button type="button" color="warn" (click)="cancel()">
-          Hủy
+        <button mat-flat-button type="button" color="accent" (click)="submit()" style="margin-right: 30px;">
+          Nạp xu
         </button>
+
       </div>
 
 

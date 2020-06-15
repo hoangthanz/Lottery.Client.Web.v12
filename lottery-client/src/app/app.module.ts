@@ -227,7 +227,7 @@ export function tokenGetter() {
     UserService,
     AseanLottoService,
     WalletService,
-    SignalRService
+    SignalRService,
   ],
   entryComponents: [ComfirmComponent, AddBankComponent, EditBankComponent],
   bootstrap: [AppComponent],
