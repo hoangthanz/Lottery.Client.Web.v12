@@ -1,3 +1,122 @@
-<p>
-  choose-the-number works!
-</p>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center"
+  style="margin-top: 10px;">
+  <div fxFlex="20%">
+    <button mat-button>
+      <mat-icon>star</mat-icon>
+      Hàng nghìn
+    </button>
+  </div>
+  <div fxFlex="80%" align="start">
+    <mat-button-toggle-group>
+      <mat-button-toggle>Tất cả</mat-button-toggle>
+      <mat-button-toggle>Tài</mat-button-toggle>
+      <mat-button-toggle>Xỉu</mat-button-toggle>
+      <mat-button-toggle>Chẵn</mat-button-toggle>
+      <mat-button-toggle>Xóa</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div fxFlex="80%" align="end">
+    <mat-grid-list cols="5" rowHeight="1:1">
+      <mat-grid-tile *ngFor="let thousandsNumber of thousandsNumbers">
+        <button mat-icon-button [style]="thousandsNumber.style" (click)="chooseNumber(0 ,thousandsNumber.value)">
+          {{ thousandsNumber?.value }}
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </div>
+</div>
+
+
+<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center"
+  style="margin-top: 10px;">
+  <div fxFlex="20%">
+    <button mat-button>
+      <mat-icon>star</mat-icon>
+      Hàng trăm
+    </button>
+  </div>
+  <div fxFlex="80%" align="start">
+    <mat-button-toggle-group>
+      <mat-button-toggle>Tất cả</mat-button-toggle>
+      <mat-button-toggle>Tài</mat-button-toggle>
+      <mat-button-toggle>Xỉu</mat-button-toggle>
+      <mat-button-toggle>Chẵn</mat-button-toggle>
+      <mat-button-toggle>Xóa</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div fxFlex="80%" align="end">
+    <mat-grid-list cols="5" rowHeight="1:1">
+      <mat-grid-tile *ngFor="let hundredsNumber of hundredsNumbers">
+        <button mat-icon-button [style]="hundredsNumber.style" (click)="chooseNumber(1 ,hundredsNumber.value)">
+          {{ hundredsNumber?.value }}
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </div>
+</div>
+
+
+<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center"
+  style="margin-top: 10px;">
+  <div fxFlex="20%">
+    <button mat-button>
+      <mat-icon>star</mat-icon>
+      Hàng chục
+    </button>
+  </div>
+  <div fxFlex="80%" align="start">
+    <mat-button-toggle-group>
+      <mat-button-toggle>Tất cả</mat-button-toggle>
+      <mat-button-toggle>Tài</mat-button-toggle>
+      <mat-button-toggle>Xỉu</mat-button-toggle>
+      <mat-button-toggle>Chẵn</mat-button-toggle>
+      <mat-button-toggle>Xóa</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div fxFlex="80%" align="end">
+    <mat-grid-list cols="5" rowHeight="1:1">
+      <mat-grid-tile *ngFor="let tensNumber of tensNumbers">
+        <button mat-icon-button [style]="tensNumber.style" (click)="chooseNumber(2 ,tensNumber.value)">
+          {{ tensNumber?.value }}
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </div>
+</div>
+
+
+<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center"
+  style="margin-top: 10px;">
+  <div fxFlex="20%">
+    <button mat-button>
+      <mat-icon>star</mat-icon>
+      Hàng đơn vị
+    </button>
+  </div>
+  <div fxFlex="80%" align="start">
+    <mat-button-toggle-group>
+      <mat-button-toggle>Tất cả</mat-button-toggle>
+      <mat-button-toggle>Tài</mat-button-toggle>
+      <mat-button-toggle>Xỉu</mat-button-toggle>
+      <mat-button-toggle>Chẵn</mat-button-toggle>
+      <mat-button-toggle>Xóa</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <div fxFlex="80%" align="end">
+    <mat-grid-list cols="5" rowHeight="1:1">
+      <mat-grid-tile *ngFor="let onesNumber of onesNumbers">
+        <button mat-icon-button [style]="onesNumber.style" (click)="chooseNumber(3 ,onesNumber.value)">
+          {{ onesNumber?.value }}
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </div>
+</div>

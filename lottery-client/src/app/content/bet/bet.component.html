@@ -26,17 +26,22 @@
   <mat-sidenav-container class="layout-container" autosize>
     <mat-sidenav-content>
 
-      <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center"
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="24px" fxLayoutAlign="center"
         style="width: 100%;">
-        <div fxFlex="100%" fxFlex.xs="100%">
-          <div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center" style="margin-top: 10px;">
-            <div fxFlex="50%" fxFlex.xs="50%" style="text-align: left; font-size: 1.1rem; color: red; padding-left: 10px;">
-              <b>{{ lottoTypeSelected?.name }}</b>
-            </div>
-            <div fxFlex="50%" fxFlex.xs="50%" style="text-align: left; font-size: 1.1rem; color: red; font-style: italic;" align="end">
-              đang sử dụng: {{ methodTypeNameSelected }}
+        <div fxFlex="100%" fxFlex.xs="100%" class="image-center">
+          <div style="width: 90%;">
+            <div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center"
+              style="margin-top: 10px;">
+              <div fxFlex="50%" fxFlex.xs="50%" style="text-align: left; font-size: 1.1rem; color: red;">
+                <b>{{ lottoTypeSelected?.name }}</b>
+              </div>
+              <div fxFlex="50%" fxFlex.xs="50%"
+                style="text-align: left; font-size: 1.1rem; color: red; font-style: italic; text-align: right;">
+                đang sử dụng: {{ methodTypeNameSelected }}
+              </div>
             </div>
           </div>
+
         </div>
 
         <div fxFlex="100%" fxFlex.xs="100%" class="button-center">
@@ -53,6 +58,29 @@
         </div>
 
       </div>
+
+      <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center"
+        style="width: 100%;">
+        <div fxFlex="100%" fxFlex.xs="100%" class="button-center">
+          <div style="width: 90%;">
+            <mat-tab-group animationDuration="0ms">
+              <mat-tab label="Chọn số">
+                <app-choose-the-number [lottoRegion]="lottoTypeSelected?.code" [lottoType]="methodSelected">
+                </app-choose-the-number>
+              </mat-tab>
+              <mat-tab label=" Nhập số">
+                <app-enter-the-number></app-enter-the-number>
+              </mat-tab>
+              <mat-tab label="Chọn số nhanh">
+                <app-choose-a-quick-number></app-choose-a-quick-number>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+
+        </div>
+      </div>
+
+
 
     </mat-sidenav-content>
   </mat-sidenav-container>

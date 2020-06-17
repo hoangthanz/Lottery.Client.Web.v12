@@ -345,6 +345,8 @@ export class BetComponent extends BaseComponentService implements OnInit {
 
     this.methodTypeList = this.lottos[0].types;
     this.methodTypeNameSelected = this.lottos[0].name;
+
+    this.ChooseFatherType(this.lottos[0].code);
   }
 
   submitBet() {
