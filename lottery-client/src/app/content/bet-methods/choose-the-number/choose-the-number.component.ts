@@ -1,11 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BaseComponentService } from 'src/app/shared/components/base-components/base-component.service';
+import { LoginService } from 'src/app/shared/services/login.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { CurrencyPipe, DatePipe } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-choose-the-number',
   templateUrl: './choose-the-number.component.html',
   styleUrls: ['./choose-the-number.component.css'],
 })
-export class ChooseTheNumberComponent implements OnInit {
+export class ChooseTheNumberComponent extends BaseComponentService implements OnInit {
   lottoResults = [
     {
       name: 'Miền Bắc',
@@ -489,7 +495,16 @@ export class ChooseTheNumberComponent implements OnInit {
   normalStype = 'background-color: #6C63FF; color: whitesmoke;';
   selectedStyle = 'background-color: #F44336; color: whitesmoke;';
 
-  constructor() {}
+  constructor(
+    private loginService: LoginService,
+    public toastr: ToastrService,
+    public router: Router,
+    public currencyPipe: CurrencyPipe,
+    public datePipe: DatePipe,
+    private dialog: MatDialog
+  ) {
+    super(toastr, router, currencyPipe, datePipe);
+  }
 
   ngOnInit() {}
 
