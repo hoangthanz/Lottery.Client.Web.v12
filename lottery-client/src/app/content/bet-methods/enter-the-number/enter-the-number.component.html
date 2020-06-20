@@ -1,3 +1,16 @@
-<p>
-  enter-the-number works!
-</p>
+<div fxLayout="row" fxLayout.xs="row" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center" style="width: 100%;"
+  style="margin-top: 10px;">
+  <div fxFlex="20%" style="color: #6C63FF;">
+    <mat-icon>help</mat-icon>
+  </div>
+
+  <div fxFlex="80%" style="color: grey;">
+    <i>{{ title }}</i>
+  </div>
+</div>
+
+<mat-form-field style.fontSize=" 16px" floatLabel="always" style="margin-top: 10px;">
+  <mat-label>{{ tutorialLabel }}</mat-label>
+  <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
+    [placeholder]="tutorialText" cdkAutosizeMaxRows="5"></textarea>
+</mat-form-field>

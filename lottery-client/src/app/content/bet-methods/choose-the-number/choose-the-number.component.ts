@@ -311,7 +311,8 @@ export class ChooseTheNumberComponent implements OnInit {
   ];
 
   @Input() lottoRegion: string = '';
-  @Input() lottoType: string = '';
+  @Input() fatherType: string = ''; // kiểu lô, đề, hay bao,..
+  @Input() childlottoType: string = ''; // kiểu con
 
   thousandsNumbers = [
     {
@@ -486,42 +487,240 @@ export class ChooseTheNumberComponent implements OnInit {
   ];
 
   normalStype = 'background-color: #6C63FF; color: whitesmoke;';
-  selectedStype = 'background-color: #FF4081; color: whitesmoke;';
+  selectedStyle = 'background-color: #F44336; color: whitesmoke;';
 
   constructor() {}
 
-  ngOnInit() {
-    console.log(this.lottoRegion);
-    console.log(this.lottoType);
-  }
+  ngOnInit() {}
 
+  // type là hàng, value là giá trị truyền vào
   chooseNumber(type, value) {
     if (type == 0) {
       this.thousandsNumbers[value].style =
         this.thousandsNumbers[value].style == this.normalStype
-          ? this.selectedStype
+          ? this.selectedStyle
           : this.normalStype;
     }
 
     if (type == 1) {
       this.hundredsNumbers[value].style =
         this.hundredsNumbers[value].style == this.normalStype
-          ? this.selectedStype
+          ? this.selectedStyle
           : this.normalStype;
     }
 
     if (type == 2) {
       this.tensNumbers[value].style =
         this.tensNumbers[value].style == this.normalStype
-          ? this.selectedStype
+          ? this.selectedStyle
           : this.normalStype;
     }
 
     if (type == 3) {
       this.onesNumbers[value].style =
         this.onesNumbers[value].style == this.normalStype
-          ? this.selectedStype
+          ? this.selectedStyle
           : this.normalStype;
     }
   }
+
+  // unitType là hàng, numberType: kiểu chẵn, lẻ, tài xỉu...
+  selectNumber(unitType: any, numberType) {
+    console.log(this.fatherType);
+    console.log(this.childlottoType);
+    if (unitType == 0) {
+      this.thousandsNumbers.forEach((item, index) => {
+        item.style = this.normalStype;
+      });
+
+      switch (numberType) {
+        case 0:
+          this.thousandsNumbers.forEach((item, index) => {
+            item.style = this.selectedStyle;
+          });
+          break;
+        case 1:
+          this.thousandsNumbers[5].style = this.selectedStyle;
+          this.thousandsNumbers[6].style = this.selectedStyle;
+          this.thousandsNumbers[7].style = this.selectedStyle;
+          this.thousandsNumbers[8].style = this.selectedStyle;
+          this.thousandsNumbers[9].style = this.selectedStyle;
+          break;
+        case 2:
+          this.thousandsNumbers[0].style = this.selectedStyle;
+          this.thousandsNumbers[1].style = this.selectedStyle;
+          this.thousandsNumbers[2].style = this.selectedStyle;
+          this.thousandsNumbers[3].style = this.selectedStyle;
+          this.thousandsNumbers[4].style = this.selectedStyle;
+          break;
+        case 3:
+          this.thousandsNumbers[1].style = this.selectedStyle;
+          this.thousandsNumbers[3].style = this.selectedStyle;
+          this.thousandsNumbers[5].style = this.selectedStyle;
+          this.thousandsNumbers[7].style = this.selectedStyle;
+          this.thousandsNumbers[9].style = this.selectedStyle;
+          break;
+        case 4:
+          this.thousandsNumbers[0].style = this.selectedStyle;
+          this.thousandsNumbers[2].style = this.selectedStyle;
+          this.thousandsNumbers[4].style = this.selectedStyle;
+          this.thousandsNumbers[6].style = this.selectedStyle;
+          this.thousandsNumbers[8].style = this.selectedStyle;
+          break;
+        case 5:
+          this.thousandsNumbers.forEach((item, index) => {
+            item.style = this.normalStype;
+          });
+          break;
+        default:
+          break;
+      }
+    }
+
+    if (unitType == 1) {
+      this.hundredsNumbers.forEach((item, index) => {
+        item.style = this.normalStype;
+      });
+      switch (numberType) {
+        case 0:
+          this.hundredsNumbers.forEach((item, index) => {
+            item.style = this.selectedStyle;
+          });
+          break;
+        case 1:
+          this.hundredsNumbers[5].style = this.selectedStyle;
+          this.hundredsNumbers[6].style = this.selectedStyle;
+          this.hundredsNumbers[7].style = this.selectedStyle;
+          this.hundredsNumbers[8].style = this.selectedStyle;
+          this.hundredsNumbers[9].style = this.selectedStyle;
+          break;
+        case 2:
+          this.hundredsNumbers[0].style = this.selectedStyle;
+          this.hundredsNumbers[1].style = this.selectedStyle;
+          this.hundredsNumbers[2].style = this.selectedStyle;
+          this.hundredsNumbers[3].style = this.selectedStyle;
+          this.hundredsNumbers[4].style = this.selectedStyle;
+          break;
+        case 3:
+          this.hundredsNumbers[1].style = this.selectedStyle;
+          this.hundredsNumbers[3].style = this.selectedStyle;
+          this.hundredsNumbers[5].style = this.selectedStyle;
+          this.hundredsNumbers[7].style = this.selectedStyle;
+          this.hundredsNumbers[9].style = this.selectedStyle;
+          break;
+        case 4:
+          this.hundredsNumbers[0].style = this.selectedStyle;
+          this.hundredsNumbers[2].style = this.selectedStyle;
+          this.hundredsNumbers[4].style = this.selectedStyle;
+          this.hundredsNumbers[6].style = this.selectedStyle;
+          this.hundredsNumbers[8].style = this.selectedStyle;
+          break;
+        case 5:
+          this.hundredsNumbers.forEach((item, index) => {
+            item.style = this.normalStype;
+          });
+          break;
+        default:
+          break;
+      }
+    }
+
+    if (unitType == 2) {
+      this.tensNumbers.forEach((item, index) => {
+        item.style = this.normalStype;
+      });
+      switch (numberType) {
+        case 0:
+          this.tensNumbers.forEach((item, index) => {
+            item.style = this.selectedStyle;
+          });
+          break;
+        case 1:
+          this.tensNumbers[5].style = this.selectedStyle;
+          this.tensNumbers[6].style = this.selectedStyle;
+          this.tensNumbers[7].style = this.selectedStyle;
+          this.tensNumbers[8].style = this.selectedStyle;
+          this.tensNumbers[9].style = this.selectedStyle;
+          break;
+        case 2:
+          this.tensNumbers[0].style = this.selectedStyle;
+          this.tensNumbers[1].style = this.selectedStyle;
+          this.tensNumbers[2].style = this.selectedStyle;
+          this.tensNumbers[3].style = this.selectedStyle;
+          this.tensNumbers[4].style = this.selectedStyle;
+          break;
+        case 3:
+          this.tensNumbers[1].style = this.selectedStyle;
+          this.tensNumbers[3].style = this.selectedStyle;
+          this.tensNumbers[5].style = this.selectedStyle;
+          this.tensNumbers[7].style = this.selectedStyle;
+          this.tensNumbers[9].style = this.selectedStyle;
+          break;
+        case 4:
+          this.tensNumbers[0].style = this.selectedStyle;
+          this.tensNumbers[2].style = this.selectedStyle;
+          this.tensNumbers[4].style = this.selectedStyle;
+          this.tensNumbers[6].style = this.selectedStyle;
+          this.tensNumbers[8].style = this.selectedStyle;
+          break;
+        case 5:
+          this.tensNumbers.forEach((item, index) => {
+            item.style = this.normalStype;
+          });
+          break;
+        default:
+          break;
+      }
+    }
+
+    if (unitType == 3) {
+      this.onesNumbers.forEach((item, index) => {
+        item.style = this.normalStype;
+      });
+      switch (numberType) {
+        case 0:
+          this.onesNumbers.forEach((item, index) => {
+            item.style = this.selectedStyle;
+          });
+          break;
+        case 1:
+          this.onesNumbers[5].style = this.selectedStyle;
+          this.onesNumbers[6].style = this.selectedStyle;
+          this.onesNumbers[7].style = this.selectedStyle;
+          this.onesNumbers[8].style = this.selectedStyle;
+          this.onesNumbers[9].style = this.selectedStyle;
+          break;
+        case 2:
+          this.onesNumbers[0].style = this.selectedStyle;
+          this.onesNumbers[1].style = this.selectedStyle;
+          this.onesNumbers[2].style = this.selectedStyle;
+          this.onesNumbers[3].style = this.selectedStyle;
+          this.onesNumbers[4].style = this.selectedStyle;
+          break;
+        case 3:
+          this.onesNumbers[1].style = this.selectedStyle;
+          this.onesNumbers[3].style = this.selectedStyle;
+          this.onesNumbers[5].style = this.selectedStyle;
+          this.onesNumbers[7].style = this.selectedStyle;
+          this.onesNumbers[9].style = this.selectedStyle;
+          break;
+        case 4:
+          this.onesNumbers[0].style = this.selectedStyle;
+          this.onesNumbers[2].style = this.selectedStyle;
+          this.onesNumbers[4].style = this.selectedStyle;
+          this.onesNumbers[6].style = this.selectedStyle;
+          this.onesNumbers[8].style = this.selectedStyle;
+          break;
+        case 5:
+          this.onesNumbers.forEach((item, index) => {
+            item.style = this.normalStype;
+          });
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  openRowValue() {}
 }

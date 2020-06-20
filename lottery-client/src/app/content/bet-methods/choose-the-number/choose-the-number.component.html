@@ -1,18 +1,19 @@
 <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center"
   style="margin-top: 10px;">
   <div fxFlex="20%">
-    <button mat-button>
+    <button mat-button style="color: gray;">
       <mat-icon>star</mat-icon>
-      Hàng nghìn
+      Nghìn
     </button>
   </div>
   <div fxFlex="80%" align="start">
     <mat-button-toggle-group>
-      <mat-button-toggle>Tất cả</mat-button-toggle>
-      <mat-button-toggle>Tài</mat-button-toggle>
-      <mat-button-toggle>Xỉu</mat-button-toggle>
-      <mat-button-toggle>Chẵn</mat-button-toggle>
-      <mat-button-toggle>Xóa</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(0,0)" style="color: grey;">Tất cả</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(0,1)" style="color: grey;">Tài</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(0,2)" style="color: grey;">Xỉu</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(0,3)" style="color: grey;">Chẵn</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(0,4)" style="color: grey;">Lẻ</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(0,5)" style="color: grey;">Xóa</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
 
@@ -32,18 +33,19 @@
 <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center"
   style="margin-top: 10px;">
   <div fxFlex="20%">
-    <button mat-button>
+    <button mat-button style="color: grey;">
       <mat-icon>star</mat-icon>
-      Hàng trăm
+      Trăm
     </button>
   </div>
   <div fxFlex="80%" align="start">
     <mat-button-toggle-group>
-      <mat-button-toggle>Tất cả</mat-button-toggle>
-      <mat-button-toggle>Tài</mat-button-toggle>
-      <mat-button-toggle>Xỉu</mat-button-toggle>
-      <mat-button-toggle>Chẵn</mat-button-toggle>
-      <mat-button-toggle>Xóa</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(1,0)" style="color: grey;">Tất cả</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(1,1)" style="color: grey;">Tài</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(1,2)" style="color: grey;">Xỉu</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(1,3)" style="color: grey;">Chẵn</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(1,4)" style="color: grey;">Lẻ</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(1,5)" style="color: grey;">Xóa</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
 
@@ -63,18 +65,19 @@
 <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center"
   style="margin-top: 10px;">
   <div fxFlex="20%">
-    <button mat-button>
+    <button mat-button style="color: grey;">
       <mat-icon>star</mat-icon>
-      Hàng chục
+      Chục
     </button>
   </div>
   <div fxFlex="80%" align="start">
     <mat-button-toggle-group>
-      <mat-button-toggle>Tất cả</mat-button-toggle>
-      <mat-button-toggle>Tài</mat-button-toggle>
-      <mat-button-toggle>Xỉu</mat-button-toggle>
-      <mat-button-toggle>Chẵn</mat-button-toggle>
-      <mat-button-toggle>Xóa</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(2,0)" style="color: grey;">Tất cả</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(2,1)" style="color: grey;">Tài</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(2,2)" style="color: grey;">Xỉu</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(2,3)" style="color: grey;">Chẵn</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(2,4)" style="color: grey;">Lẻ</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(2,5)" style="color: grey;">Xóa</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
 
@@ -94,18 +97,19 @@
 <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center"
   style="margin-top: 10px;">
   <div fxFlex="20%">
-    <button mat-button>
+    <button mat-button style="color: grey;">
       <mat-icon>star</mat-icon>
-      Hàng đơn vị
+      Đơn vị
     </button>
   </div>
   <div fxFlex="80%" align="start">
     <mat-button-toggle-group>
-      <mat-button-toggle>Tất cả</mat-button-toggle>
-      <mat-button-toggle>Tài</mat-button-toggle>
-      <mat-button-toggle>Xỉu</mat-button-toggle>
-      <mat-button-toggle>Chẵn</mat-button-toggle>
-      <mat-button-toggle>Xóa</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(3,0)" style="color: grey;">Tất cả</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(3,1)" style="color: grey;">Tài</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(3,2)" style="color: grey;">Xỉu</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(3,3)" style="color: grey;">Chẵn</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(3,4)" style="color: grey;">Lẻ</mat-button-toggle>
+      <mat-button-toggle (click)="selectNumber(3,5)" style="color: grey;">Xóa</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
 

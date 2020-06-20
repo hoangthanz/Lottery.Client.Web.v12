@@ -16,9 +16,9 @@ export class BetComponent extends BaseComponentService implements OnInit {
   methodTypeList;
   methodTypeNameSelected;
 
-  methodSelected;
+  methodSelected; // phương thức con
 
-  codeSelected;
+  codeSelected; // phương thức cha
 
   lottoResults = [
     {
@@ -370,7 +370,34 @@ export class BetComponent extends BaseComponentService implements OnInit {
     this.methodTypeList = this.lottos.filter((item, index) => {
       return item.code == code;
     })[0].types;
-
+    this.codeSelected = code;
     this.methodSelected = this.methodTypeList[0].code;
+  }
+
+  // đóng mở chọn nhanh với những loại cược k có
+  isOpenChooseQuickNumber(codeSelected, methodSelected) {
+    if (
+      ('bao-lo' == codeSelected && methodSelected == 4) ||
+      '4-cang-dac-biet' == codeSelected ||
+      'dau-duoi' == codeSelected
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  // đóng mở chọn số với những loại cược k có
+  isOpenChooseNumber(codeSelected, methodSelected) {
+    if ('lo-xien' == codeSelected || 'lo-truot-xien-truot' == codeSelected) {
+      return true;
+    }
+    return false;
+  }
+
+  isOpenEnterNumber(codeSelected, methodSelected) {
+    if ('dau-duoi' == codeSelected) {
+      return true;
+    }
+    return false;
   }
 }
