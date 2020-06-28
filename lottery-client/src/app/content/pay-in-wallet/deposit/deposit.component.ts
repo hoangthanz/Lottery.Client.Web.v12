@@ -102,7 +102,6 @@ export class DepositComponent extends BaseComponentService implements OnInit {
 
   submit() {
     this.infor_deposit.coin = this.ConvertToNumber(this.coin);
-    console.log(this.infor_deposit);
     if (this.infor_deposit.coin >= 200000) {
       this.transactionsService.post_deposit(this.infor_deposit).subscribe(
         (response) => {

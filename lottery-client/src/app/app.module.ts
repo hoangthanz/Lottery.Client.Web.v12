@@ -1,3 +1,5 @@
+import { WithdrawHistoryComponent } from './content/withdraw-wallet/withdraw-history/withdraw-history.component';
+import { WithdrawComponent } from './content/withdraw-wallet/withdraw/withdraw.component';
 import { DepositHistoryComponent } from './content/pay-in-wallet/deposit-history/deposit-history.component';
 import { ChooseAQuickNumberComponent } from './content/bet-methods/choose-a-quick-number/choose-a-quick-number.component';
 import { EditBankComponent } from './content/banks/edit-bank/edit-bank.component';
@@ -136,7 +138,9 @@ export function tokenGetter() {
     AddBankComponent,
     EditBankComponent,
     DepositComponent,
-    DepositHistoryComponent
+    DepositHistoryComponent,
+    WithdrawComponent,
+    WithdrawHistoryComponent
   ],
   imports: [
     BrowserModule,

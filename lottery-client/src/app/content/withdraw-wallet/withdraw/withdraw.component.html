@@ -1,3 +1,99 @@
-<p>
-  withdraw works!
-</p>
+<div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center">
+
+  <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center" *ngIf="!isShow">
+    <div fxFlex="95%" fxLayoutWrap fxLayoutGap="1%">
+      <ul>
+        <li>Chúng tôi hỗ trợ khách hàng rút tiền qua hầu hết ngân hàng: Vietcombank, ACB, Techcombank, BIDV ...</li>
+        <li style="margin-top: 2%;">Với một số ngân hàng nhỏ, bạn sẽ cần chờ đợi thêm một khoản thời gian để chúng tôi xử lý giao dịch</li>
+        <li style="margin-top: 2%;">Quý khách lưu ý, Trước Khi rút tiền, bạn cần kiểm tra lại thông tin tài khoản cần rút để đảm bảo là chính xác.<span style="color: red;"> Nếu điền sai hoặc không chính xác,
+            chúng tôi sẽ không chịu trách nhiệm về những khoản tiền và những khiếu nại này.</span></li>
+        <li style="margin-top: 2%;">Quý khách có tối đa <span style="color: red;">5 lần rút tiền trong một ngày</span>. Số Tiền tối thiểu cho mỗi lần rút là <span style="color: red;">200.000 VNĐ.</span></li>
+        <li style="margin-top: 2%;">Yêu cầu xử lý rút tiền của bạn sẽ được xử lý trong vòng khoảng 5p'. Sau đó, bạn có
+          thể làm mới trang web của chúng tôi để kiểm tra số dư trên tài khoản.</li>
+      </ul>
+    </div>
+
+    <div fxFlex="95%" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center">
+      <button mat-flat-button type="button" color="warn" (click)="show_deposit()">
+        Tôi đã hiểu !
+      </button>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center" *ngIf="isShow">
+    <div fxFlex="95%" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center">
+      <h4 style="color: red;">Thông Tin Rút Tiền</h4>
+    </div>
+
+    <div fxLayout.xs="column" fxFlex="95%" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <div style="width: 90%;" style="text-align: center;">
+        <mat-form-field>
+          <mat-label>Chọn Ngân Hàng</mat-label>
+          <mat-select (selectionChange)="changeBank($event.value)" [(ngModel)]="ownerBankSelected">
+            <mat-option *ngFor="let item of ownerBanks" [value]="item" style="text-align: center;">
+              {{ item.bankName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Thong tin NH rút tiền -->
+      <div fxFlex.xs="95%" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center" *ngIf="isBank">
+        <div fxLayout.xs="column" style="border-style: solid; border-color: #6C63FF; width: 90%;">
+          <div fxFlex.xs="100%"
+            style=" height: 40px; background-color: #6C63FF;  color: whitesmoke; line-height: 40px;">
+            {{ bank.bankName }}
+          </div>
+
+          <div>
+            <div fxLayout="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+              style="height: 30px; margin-top: 10px;">
+              <div fxFlex="35%" style="padding-left: 15px;">Tên TK:</div>
+              <div fxFlex style="padding-left: 15px;">{{ bank.fullNameOwner }}</div>
+            </div>
+
+            <div fxLayout="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+              style="height: 30px; margin-top: 10px;">
+              <div fxFlex="35%" style="padding-left: 15px;">Chi Nhánh:</div>
+              <div fxFlex style="padding-left: 15px;">{{ bank.bankBranch }}</div>
+            </div>
+
+            <div fxLayout="row" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center"
+              style="height: 30px; margin-top: 10px;">
+              <div fxFlex="35%" style="padding-left: 15px;">STK:</div>
+              <div fxFlex style="padding-left: 15px;">{{ bank.bankAccountNumber }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center;" *ngIf="isBank">
+        <mat-form-field>
+          <mat-label>Số tiền có thể rút</mat-label>
+          <input matInput style="text-align: right;" [(ngModel)]="coin_wallet">
+        </mat-form-field>
+      </div>
+
+      <div style="text-align: center;" *ngIf="isBank">
+        <mat-form-field>
+          <mat-label>Số tiền rút</mat-label>
+          <input matInput (keypress)="numberOnly($event)" (keyup)="tranformMoney($event.target.value)"
+            style="text-align: right;" [(ngModel)]="coin" required>
+        </mat-form-field>
+      </div>
+
+      <div style="text-align: center;" *ngIf="isBank">
+        <button mat-button type="button" (click)="cancel()" style="margin-right: 10px;">
+          Hủy bỏ
+        </button>
+        <button mat-flat-button type="button" color="accent" (click)="submit()" style="margin-right: 30px;">
+          Rút tiền
+        </button>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

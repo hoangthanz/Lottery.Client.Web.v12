@@ -17,4 +17,8 @@ export class TransactionsService {
       condition
     );
   }
+
+  post_withdraw(trans: any) {
+    return this.httpClient.post(`${environment.lotteryDomain}/api/Transactions`, trans);
+  }
 }
