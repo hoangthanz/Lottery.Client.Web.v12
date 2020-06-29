@@ -1,17 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { BaseComponentService } from 'src/app/shared/components/base-components/base-component.service';
 import { LoginService } from 'src/app/shared/services/login.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+import { SynchronizeService } from 'src/app/shared/services/synchronize.service';
 
 @Component({
   selector: 'app-choose-the-number',
   templateUrl: './choose-the-number.component.html',
   styleUrls: ['./choose-the-number.component.css'],
 })
-export class ChooseTheNumberComponent extends BaseComponentService implements OnInit {
+export class ChooseTheNumberComponent extends BaseComponentService
+  implements OnInit, OnDestroy {
   lottoResults = [
     {
       name: 'Miền Bắc',
@@ -260,6 +263,14 @@ export class ChooseTheNumberComponent extends BaseComponentService implements On
           name: 'Đề giải nhất',
           code: 3,
         },
+        {
+          name: 'Đề đầu',
+          code: 4,
+        },
+        {
+          name: 'Đề đuôi',
+          code: 5,
+        },
       ],
     },
     {
@@ -292,7 +303,7 @@ export class ChooseTheNumberComponent extends BaseComponentService implements On
       types: [
         {
           name: '4 Càng đặc biệt',
-          code: 1,
+          code: 0,
         },
       ],
     },
@@ -316,9 +327,9 @@ export class ChooseTheNumberComponent extends BaseComponentService implements On
     },
   ];
 
-  @Input() lottoRegion: string = '';
-  @Input() fatherType: string = ''; // kiểu lô, đề, hay bao,..
-  @Input() childlottoType: string = ''; // kiểu con
+  lottoRegion: string = '';
+  fatherType: string = ''; // kiểu lô, đề, hay bao,..
+  childlottoType: string = ''; // kiểu con
 
   thousandsNumbers = [
     {
@@ -495,18 +506,40 @@ export class ChooseTheNumberComponent extends BaseComponentService implements On
   normalStype = 'background-color: #6C63FF; color: whitesmoke;';
   selectedStyle = 'background-color: #F44336; color: whitesmoke;';
 
+  isOpenThousandsNumbers = false;
+  isOpenHundredsNumbers = false;
+  isOpenTensNumber = false;
+  isOpenOnesNumber = false;
+
+  changeMethodBetoSubscription: Subscription;
+
+  fatherTypeSubscription: Subscription;
+
+  childlottoTypeSubscription: Subscription;
+
   constructor(
     private loginService: LoginService,
     public toastr: ToastrService,
     public router: Router,
     public currencyPipe: CurrencyPipe,
     public datePipe: DatePipe,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private synchronizeService: SynchronizeService
   ) {
     super(toastr, router, currencyPipe, datePipe);
+    this.onfatherTypeListener();
+    this.onchildlottoTypeListener();
+  }
+  ngOnDestroy() {
+    this.changeMethodBetoSubscription?.unsubscribe();
+    this.fatherTypeSubscription?.unsubscribe();
+    this.childlottoTypeSubscription?.unsubscribe();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.checkOpenValueInRow();
+    this.onChangeMethodBetoListener();
+  }
 
   // type là hàng, value là giá trị truyền vào
   chooseNumber(type, value) {
@@ -737,5 +770,270 @@ export class ChooseTheNumberComponent extends BaseComponentService implements On
     }
   }
 
-  openRowValue() {}
+  private onChangeMethodBetoListener() {
+    this.changeMethodBetoSubscription = this.synchronizeService.changeMethodBetoListener
+      .asObservable()
+      .subscribe((isChanged: boolean) => {
+        if (isChanged) {
+          this.checkOpenValueInRow();
+        }
+      });
+  }
+
+  private onfatherTypeListener() {
+    this.fatherTypeSubscription = this.synchronizeService.fatherTypeListener
+      .asObservable()
+      .subscribe((codeSelected: any) => {
+        if (codeSelected) {
+          this.fatherType = codeSelected;
+          this.checkOpenValueInRow();
+        }
+      });
+  }
+
+  private onchildlottoTypeListener() {
+    this.childlottoTypeSubscription = this.synchronizeService.childlottoTypeListener
+      .asObservable()
+      .subscribe((methodSelected: any) => {
+        if (methodSelected) {
+          this.childlottoType = methodSelected;
+          this.checkOpenValueInRow();
+        }
+      });
+  }
+
+  checkOpenValueInRow() {
+    this.initializeValue();
+    this.isOpenTensNumber = false;
+    this.isOpenOnesNumber = false;
+
+    this.isOpenThousandsNumbers = false;
+    this.isOpenHundredsNumbers = false;
+
+    if ('danh-de' == this.fatherType) {
+      this.isOpenTensNumber = true;
+      this.isOpenOnesNumber = true;
+
+      this.isOpenThousandsNumbers = false;
+      this.isOpenHundredsNumbers = false;
+    }
+
+    if ('bao-lo' == this.fatherType) {
+      this.isOpenTensNumber = true;
+      this.isOpenOnesNumber = true;
+
+      if (this.lottos[0].types[3].code.toString() == this.childlottoType) {
+        this.isOpenHundredsNumbers = true;
+      }
+
+      if (this.lottos[0].types[4].code.toString() == this.childlottoType) {
+        this.isOpenThousandsNumbers = true;
+      }
+    }
+
+    if ('3-cang-dac-biet' == this.fatherType) {
+      this.isOpenTensNumber = true;
+      this.isOpenOnesNumber = true;
+      this.isOpenHundredsNumbers = true;
+      this.isOpenThousandsNumbers = false;
+    }
+
+    if ('4-cang-dac-biet' == this.fatherType) {
+      this.isOpenTensNumber = true;
+      this.isOpenOnesNumber = true;
+      this.isOpenHundredsNumbers = true;
+      this.isOpenThousandsNumbers = true;
+    }
+
+    if (
+      'lo-xien' == this.fatherType ||
+      'lo-truot-xien-truot' == this.fatherType
+    ) {
+      this.isOpenTensNumber = true;
+      this.isOpenOnesNumber = true;
+      this.isOpenHundredsNumbers = false;
+      this.isOpenThousandsNumbers = false;
+    }
+
+    if ('dau-duoi' == this.fatherType) {
+      this.isOpenTensNumber = false;
+      this.isOpenOnesNumber = true;
+      this.isOpenHundredsNumbers = false;
+      this.isOpenThousandsNumbers = false;
+    }
+  }
+
+  initializeValue() {
+    this.thousandsNumbers = [
+      {
+        value: 0,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 1,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 2,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 3,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 4,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 5,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 6,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 7,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 8,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 9,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+    ];
+
+    this.hundredsNumbers = [
+      {
+        value: 0,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 1,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 2,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 3,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 4,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 5,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 6,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 7,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 8,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 9,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+    ];
+
+    this.tensNumbers = [
+      {
+        value: 0,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 1,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 2,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 3,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 4,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 5,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 6,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 7,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 8,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 9,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+    ];
+
+    this.onesNumbers = [
+      {
+        value: 0,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 1,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 2,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 3,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 4,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 5,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 6,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 7,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 8,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+      {
+        value: 9,
+        style: 'background-color: #6C63FF; color: whitesmoke;',
+      },
+    ];
+  }
 }

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { ComfirmComponent } from 'src/app/shared/components/comfirm/comfirm.component';
+import { SynchronizeService } from 'src/app/shared/services/synchronize.service';
 
 @Component({
   selector: 'app-bet',
@@ -268,6 +269,14 @@ export class BetComponent extends BaseComponentService implements OnInit {
           name: 'Đề giải nhất',
           code: 3,
         },
+        {
+          name: 'Đề đầu',
+          code: 4,
+        },
+        {
+          name: 'Đề đuôi',
+          code: 5,
+        },
       ],
     },
     {
@@ -300,7 +309,7 @@ export class BetComponent extends BaseComponentService implements OnInit {
       types: [
         {
           name: '4 Càng đặc biệt',
-          code: 1,
+          code: 0,
         },
       ],
     },
@@ -332,21 +341,24 @@ export class BetComponent extends BaseComponentService implements OnInit {
     public router: Router,
     public currencyPipe: CurrencyPipe,
     public datePipe: DatePipe,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private synchronizeService: SynchronizeService
   ) {
     super(toastr, router, currencyPipe, datePipe);
   }
 
   ngOnInit() {
     const code = localStorage.getItem('bet_code');
+
     this.lottoTypeSelected = this.lottoResults.filter((item, index) => {
       return item.code == code;
     })[0];
 
     this.methodTypeList = this.lottos[0].types;
     this.methodTypeNameSelected = this.lottos[0].name;
+    this.methodSelected = this.methodTypeList[0].code;
 
-    this.ChooseFatherType(this.lottos[0].code);
+    this.changeMethodBeto();
   }
 
   submitBet() {
@@ -371,7 +383,14 @@ export class BetComponent extends BaseComponentService implements OnInit {
       return item.code == code;
     })[0].types;
     this.codeSelected = code;
+
+    this.methodTypeNameSelected = this.lottos.filter((item, index) => {
+      return item.code == code;
+    })[0].name;
+
     this.methodSelected = this.methodTypeList[0].code;
+
+    this.changeMethodBeto();
   }
 
   // đóng mở chọn nhanh với những loại cược k có
@@ -399,5 +418,11 @@ export class BetComponent extends BaseComponentService implements OnInit {
       return true;
     }
     return false;
+  }
+
+  changeMethodBeto() {
+    this.synchronizeService.childlottoTypeListener.next(this.methodSelected);
+    this.synchronizeService.fatherTypeListener.next(this.codeSelected);
+    this.synchronizeService.changeMethodBetoListener.next(true);
   }
 }

@@ -48,7 +48,7 @@
           <div style=" width: 90%;">
             <mat-form-field>
               <mat-label>Phương thức cược</mat-label>
-              <mat-select [(ngModel)]="methodSelected">
+              <mat-select [(ngModel)]="methodSelected" (selectionChange)="changeMethodBeto()">
                 <mat-option *ngFor="let method of methodTypeList" [value]="method.code" style="color: grey;">
                   {{ method.name }}
                 </mat-option>
@@ -65,17 +65,14 @@
           <div style="width: 90%;">
             <mat-tab-group animationDuration="0ms">
               <mat-tab label="Chọn số" *ngIf="!isOpenChooseNumber(codeSelected,methodSelected)">
-                <app-choose-the-number [lottoRegion]="lottoTypeSelected?.code" [fatherType]="codeSelected"
-                  [childlottoType]="methodSelected">
+                <app-choose-the-number [lottoRegion]="lottoTypeSelected?.code">
                 </app-choose-the-number>
               </mat-tab>
               <mat-tab label="Nhập số" *ngIf="!isOpenEnterNumber(codeSelected,methodSelected)">
-                <app-enter-the-number [lottoRegion]="lottoTypeSelected?.code" [fatherType]="codeSelected"
-                  [childlottoType]="methodSelected"></app-enter-the-number>
+                <app-enter-the-number [lottoRegion]="lottoTypeSelected?.code"></app-enter-the-number>
               </mat-tab>
               <mat-tab label="Chọn số nhanh" *ngIf="!isOpenChooseQuickNumber(codeSelected,methodSelected)">
-                <app-choose-a-quick-number [lottoRegion]="lottoTypeSelected?.code" [fatherType]="codeSelected"
-                  [childlottoType]="methodSelected"></app-choose-a-quick-number>
+                <app-choose-a-quick-number [lottoRegion]="lottoTypeSelected?.code"></app-choose-a-quick-number>
               </mat-tab>
             </mat-tab-group>
           </div>

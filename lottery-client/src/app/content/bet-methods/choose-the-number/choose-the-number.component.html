@@ -1,5 +1,5 @@
 <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center"
-  style="margin-top: 10px;">
+  style="margin-top: 10px;" *ngIf="isOpenThousandsNumbers">
   <div fxFlex="20%">
     <button mat-button style="color: gray;">
       <mat-icon>star</mat-icon>
@@ -31,7 +31,7 @@
 
 
 <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center"
-  style="margin-top: 10px;">
+  style="margin-top: 10px;" *ngIf="isOpenHundredsNumbers">
   <div fxFlex="20%">
     <button mat-button style="color: grey;">
       <mat-icon>star</mat-icon>
@@ -63,7 +63,7 @@
 
 
 <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center"
-  style="margin-top: 10px;">
+  style="margin-top: 10px;" *ngIf="isOpenTensNumber">
   <div fxFlex="20%">
     <button mat-button style="color: grey;">
       <mat-icon>star</mat-icon>
@@ -95,7 +95,7 @@
 
 
 <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center"
-  style="margin-top: 10px;">
+  style="margin-top: 10px;" *ngIf="isOpenOnesNumber">
   <div fxFlex="20%">
     <button mat-button style="color: grey;">
       <mat-icon>star</mat-icon>

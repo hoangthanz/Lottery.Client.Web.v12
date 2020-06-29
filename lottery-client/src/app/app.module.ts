@@ -104,6 +104,7 @@ import { TransactionsService } from './shared/services/Transactions.service';
 import { TransactionsHistoryService } from './shared/services/Transactions-History.service';
 import { WalletService } from './shared/services/user/wallet.service';
 import { SignalRService } from './shared/services/signal-r.service';
+import { SynchronizeService } from './shared/services/synchronize.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -232,6 +233,7 @@ export function tokenGetter() {
     AseanLottoService,
     WalletService,
     SignalRService,
+    SynchronizeService
   ],
   entryComponents: [ComfirmComponent, AddBankComponent, EditBankComponent],
   bootstrap: [AppComponent],

@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { BaseComponentService } from 'src/app/shared/components/base-components/base-component.service';
+import { Subscription } from 'rxjs';
+import { SynchronizeService } from 'src/app/shared/services/synchronize.service';
 
 @Component({
   selector: 'app-enter-the-number',
@@ -13,9 +15,9 @@ import { BaseComponentService } from 'src/app/shared/components/base-components/
 })
 export class EnterTheNumberComponent extends BaseComponentService
   implements OnInit {
-  @Input() lottoRegion: string = '';
-  @Input() fatherType: string = ''; // kiểu lô, đề, hay bao,..
-  @Input() childlottoType: string = ''; // kiểu con
+  lottoRegion: string = '';
+  fatherType: string = ''; // kiểu lô, đề, hay bao,..
+  childlottoType: string = ''; // kiểu con
 
   titleEnum = {
     chuSoDau_2: 'Đánh 2 chữ số đầu trong các giải',
@@ -32,15 +34,24 @@ export class EnterTheNumberComponent extends BaseComponentService
   tutorialText =
     'Cách chơi: \nGiữa mỗi lần cược phân cách bởi dấu ; hoặc dấu , hoặc khoảng trắng';
 
+  changeMethodBetoSubscription: Subscription;
+
+  fatherTypeSubscription: Subscription;
+
+  childlottoTypeSubscription: Subscription;
+
   constructor(
     private loginService: LoginService,
     public toastr: ToastrService,
     public router: Router,
     public currencyPipe: CurrencyPipe,
     public datePipe: DatePipe,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private synchronizeService: SynchronizeService
   ) {
     super(toastr, router, currencyPipe, datePipe);
+    this.onfatherTypeListener();
+    this.onchildlottoTypeListener();
   }
 
   ngOnInit() {
@@ -86,6 +97,42 @@ export class EnterTheNumberComponent extends BaseComponentService
 
       default:
         break;
+    }
+  }
+
+  private onfatherTypeListener() {
+    this.fatherTypeSubscription = this.synchronizeService.fatherTypeListener
+      .asObservable()
+      .subscribe((codeSelected: any) => {
+        if (codeSelected) {
+          this.fatherType = codeSelected;
+          this.checkOpenValueInRow();
+        }
+      });
+  }
+
+  private onchildlottoTypeListener() {
+    this.childlottoTypeSubscription = this.synchronizeService.childlottoTypeListener
+      .asObservable()
+      .subscribe((methodSelected: any) => {
+        if (methodSelected) {
+          this.childlottoType = methodSelected;
+          this.checkOpenValueInRow();
+        }
+      });
+  }
+
+  checkOpenValueInRow() {
+    if ('danh-de' == this.fatherType) {
+    }
+
+    if ('bao-lo' == this.fatherType) {
+    }
+
+    if ('3-cang-dac-biet' == this.fatherType) {
+    }
+
+    if ('4-cang-dac-biet' == this.fatherType) {
     }
   }
 }
