@@ -1,3 +1,29 @@
-<p>
-  choose-a-quick-number works!
-</p>
+<div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center"
+  style="margin-top: 10px;">
+
+  <div fxFlex="100%" fxFlex.xs="100%" class="button-center">
+    <div style=" width: 90%;">
+      <mat-form-field>
+        <mat-label>Chọn số dưới đây</mat-label>
+        <mat-select (selectionChange)="changeTypeDigits($event.value)" [(ngModel)]="typeSelected">
+          <mat-option *ngFor="let type of types" [value]="type.value" style="color: grey;">
+            {{ type.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxFlex="100%" fxFlex.xs="100%" class="button-center">
+    <div style=" width: 90%;">
+      <mat-grid-list cols="5" rowHeight="1:1">
+        <mat-grid-tile *ngFor="let set of SetOfNumberDigits;let i = index">
+          <button mat-icon-button [style]="set.style" (click)="chooseNumber(set.value,i)">
+            {{ set.value }}
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+
+</div>

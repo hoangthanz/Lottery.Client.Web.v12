@@ -353,12 +353,7 @@ export class BetComponent extends BaseComponentService implements OnInit {
     this.lottoTypeSelected = this.lottoResults.filter((item, index) => {
       return item.code == code;
     })[0];
-
-    this.methodTypeList = this.lottos[0].types;
-    this.methodTypeNameSelected = this.lottos[0].name;
-    this.methodSelected = this.methodTypeList[0].code;
-
-    this.changeMethodBeto();
+    this.ChooseFatherType('bao-lo');
   }
 
   submitBet() {

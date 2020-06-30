@@ -8,12 +8,11 @@
           <mat-icon>arrow_back_ios</mat-icon>
         </button>
       </div>
-      <div fxFlex="33%" fxFlex.xs="33%">
-        <span style="color: whitesmoke;"></span>
-      </div>
-      <div fxFlex="33%" fxFlex.xs="33%" align="end">
+
+      <div fxFlex align="end">
         <button mat-button style="color: whitesmoke;" [matMenuTriggerFor]="afterMenu">
-          <mat-icon>transform</mat-icon>
+          <mat-icon>keyboard_arrow_down</mat-icon>
+          Chọn kiểu đặt cược
         </button>
         <mat-menu #afterMenu="matMenu" xPosition="after">
           <button mat-menu-item *ngFor="let l of lottos" (click)="ChooseFatherType(l.code)"> {{ l.name }}</button>
